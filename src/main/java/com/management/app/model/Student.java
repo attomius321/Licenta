@@ -1,6 +1,11 @@
-package com.management.app.student;
+package com.management.app.model;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -21,6 +26,21 @@ public class Student {
     private String email;
     private Integer year;
     private String faculty;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "student_courseSchedule",
+        joinColumns = {
+            @JoinColumn(name = "student_id", referencedColumnName = "id")
+        },
+        inverseJoinColumns = {
+            @JoinColumn(name = "course_schedule_id", referencedColumnName = "id")
+        }
+    )
+    private Set<CourseSchedule> courseSchedules = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private CourseEnrollment courseEnrollment;
 
     public Student() { }
 

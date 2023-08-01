@@ -1,5 +1,7 @@
-package com.management.app.student;
+package com.management.app.config;
 
+import com.management.app.model.Student;
+import com.management.app.repository.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
