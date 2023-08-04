@@ -4,46 +4,26 @@ import jakarta.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table
 public class CourseSchedule {
     @Id
-    @SequenceGenerator(
-            name = "course_schedule_sequence",
-            sequenceName = "course_schedule_sequence",
-            allocationSize = 1
-    )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "course_schedule_sequence"
+            strategy = GenerationType.UUID
     )
-    private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "course_id")
-    private Course course;
-
-    @ManyToMany(mappedBy = "courseSchedules", fetch = FetchType.LAZY)
-    private Set<Student> students = new HashSet<>();
+    private UUID id;
 
     private int dayOfWeek;
     private int hourInterval;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
     }
 
     public int getDayOfWeek() {
@@ -66,7 +46,6 @@ public class CourseSchedule {
     public String toString() {
         return "CourseSchedule{" +
                 "id=" + id +
-                ", course=" + course +
                 ", dayOfWeek=" + dayOfWeek +
                 ", hourInterval=" + hourInterval +
                 '}';

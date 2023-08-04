@@ -15,7 +15,7 @@ public class StudentConfig {
     CommandLineRunner commandLineRunner(StudentRepository repository) {
         return args -> {
             Student player1 = new Student(
-                    1L,
+
                     "Marian",
                     "Mihael",
                     "marian.mihael@gmail.com",
@@ -24,7 +24,6 @@ public class StudentConfig {
             );
 
             Student player2 = new Student(
-                    2L,
                     "Mirel",
                     "Cioban",
                     "mirel.cioban@gmail.com",
@@ -33,7 +32,7 @@ public class StudentConfig {
             );
 
             Student player3 = new Student(
-                    3L,
+
                     "Strat",
                     "Stat",
                     "strat.stat@gmail.com",
