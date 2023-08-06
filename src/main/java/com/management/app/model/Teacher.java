@@ -17,6 +17,18 @@ public class Teacher {
 
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "university_id")
+    private University university;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Teacher() {
+
+    }
+
     public UUID getId() {
         return id;
     }
@@ -31,6 +43,22 @@ public class Teacher {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public University getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(University university) {
+        this.university = university;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

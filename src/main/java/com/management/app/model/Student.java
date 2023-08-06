@@ -14,25 +14,33 @@ public class Student {
     private UUID id;
     private String firstName;
     private String lastName;
-    private String email;
     private Integer year;
     private String faculty;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "student_course_schedule",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_schedule_id")
+    )
+    private Set<CourseSchedule> courseSchedules = new HashSet<>();
+
     public Student() { }
 
-    public Student(UUID id, String firstName, String lastName, String email, Integer year, String faculty) {
+    public Student(UUID id, String firstName, String lastName, Integer year, String faculty) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.year = year;
         this.faculty = faculty;
     }
 
-    public Student(String firstName, String lastName, String email, Integer year, String faculty) {
+    public Student(String firstName, String lastName, Integer year, String faculty) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.year = year;
         this.faculty = faculty;
     }
@@ -61,14 +69,6 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Integer getYear() {
         return year;
     }
@@ -85,15 +85,29 @@ public class Student {
         this.faculty = faculty;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", year=" + year +
-                ", faculty='" + faculty + '\'' +
-                '}';
+    public Set<CourseSchedule> getCourseSchedules() {
+        return new HashSet(courseSchedules);
+    }
+
+    public void addCourseSchedule(CourseSchedule courseSchedule) {
+        if (courseSchedules.contains(courseSchedule))
+            return;
+
+        courseSchedules.add(courseSchedule);
+    }
+
+    public void removeCourseSchedule(CourseSchedule courseSchedule) {
+        if (!courseSchedules.contains(courseSchedule))
+            return;
+
+        courseSchedules.remove(courseSchedule);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

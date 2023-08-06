@@ -4,6 +4,8 @@ import com.management.app.model.CourseLocation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @Repository
-public interface CourseLocationRepository extends JpaRepository<CourseLocation, Long> {
+public interface CourseLocationRepository extends JpaRepository<CourseLocation, UUID> {
 }

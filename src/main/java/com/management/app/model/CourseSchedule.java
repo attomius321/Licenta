@@ -15,8 +15,23 @@ public class CourseSchedule {
     )
     private UUID id;
 
-    private int dayOfWeek;
-    private int hourInterval;
+    private Integer dayOfWeek;
+    private Integer startsAt;
+
+    public CourseSchedule() { }
+
+    public CourseSchedule(UUID id, Integer dayOfWeek, Integer hours) {
+        this.id = id;
+        this.dayOfWeek = dayOfWeek;
+        this.startsAt = hours;
+    }
+
+    public CourseSchedule(Integer dayOfWeek, Integer startsAt) {
+        this.dayOfWeek = dayOfWeek;
+        this.startsAt = startsAt;
+    }
+    @ManyToMany(mappedBy = "courseSchedules", fetch = FetchType.LAZY)
+    private Set<Student> students = new HashSet<>();
 
     public UUID getId() {
         return id;
@@ -26,28 +41,37 @@ public class CourseSchedule {
         this.id = id;
     }
 
-    public int getDayOfWeek() {
+    public Integer getDayOfWeek() {
         return dayOfWeek;
     }
 
-    public void setDayOfWeek(int dayOfWeek) {
+    public void setDayOfWeek(Integer dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public int getHourInterval() {
-        return hourInterval;
+    public Integer getHours() {
+        return startsAt;
     }
 
-    public void setHourInterval(int hourInterval) {
-        this.hourInterval = hourInterval;
+    public void setHours(Integer hours) {
+        this.startsAt = hours;
     }
 
-    @Override
-    public String toString() {
-        return "CourseSchedule{" +
-                "id=" + id +
-                ", dayOfWeek=" + dayOfWeek +
-                ", hourInterval=" + hourInterval +
-                '}';
+    public Set<Student> getStudents() {
+        return new HashSet<Student>(students);
+    }
+
+    public void addStudent(Student student) {
+        if (students.contains(student))
+            return;
+
+        students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        if (!students.contains(student))
+            return;
+
+        students.remove(student);
     }
 }

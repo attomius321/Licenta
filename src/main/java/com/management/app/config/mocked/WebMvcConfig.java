@@ -1,4 +1,4 @@
-package com.management.app.config;
+package com.management.app.config.mocked;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
