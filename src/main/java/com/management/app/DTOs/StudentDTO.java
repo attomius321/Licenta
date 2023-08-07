@@ -9,12 +9,23 @@ public class StudentDTO {
     private Integer year;
     private String faculty;
 
+    private UserDTO userDetails;
+
     public StudentDTO(UUID id, String firstName, String lastName, Integer year, String faculty) {
         this.id = id.toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.year = year;
         this.faculty = faculty;
+    }
+
+    public StudentDTO(UUID id, String firstName, String lastName, Integer year, String faculty, UserDTO userDTO) {
+        this.id = id.toString();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.year = year;
+        this.faculty = faculty;
+        this.userDetails = userDTO;
     }
 
     public String getId() {
@@ -55,5 +66,13 @@ public class StudentDTO {
 
     public void setFaculty(String faculty) {
         this.faculty = faculty;
+    }
+
+    public UserDTO getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDTO userDetails) {
+        this.userDetails = userDetails;
     }
 }

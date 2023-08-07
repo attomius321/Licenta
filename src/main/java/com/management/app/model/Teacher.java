@@ -2,9 +2,7 @@ package com.management.app.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table
@@ -24,6 +22,13 @@ public class Teacher {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "teacher_course",
+            joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private Set<Course> courses = new HashSet<>();
 
     public Teacher() {
 
@@ -59,6 +64,24 @@ public class Teacher {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Course> getCourses() {
+        return new HashSet(courses);
+    }
+
+    public void addCourse(Course course) {
+        if (courses.contains(course))
+            return;
+
+        courses.add(course);
+    }
+
+    public void removeCourse(Course course) {
+        if (!courses.contains(course))
+            return;
+
+        courses.remove(course);
     }
 
     @Override

@@ -33,6 +33,14 @@ public class CourseSchedule {
     @ManyToMany(mappedBy = "courseSchedules", fetch = FetchType.LAZY)
     private Set<Student> students = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name="course_id")
+    private Course course;
+
+    @ManyToOne
+    @JoinColumn(name="course_location_id")
+    private CourseLocation courseLocation;
+
     public UUID getId() {
         return id;
     }
@@ -49,11 +57,11 @@ public class CourseSchedule {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public Integer getHours() {
+    public Integer getStartsAt() {
         return startsAt;
     }
 
-    public void setHours(Integer hours) {
+    public void setStartsAt(Integer hours) {
         this.startsAt = hours;
     }
 
@@ -73,5 +81,21 @@ public class CourseSchedule {
             return;
 
         students.remove(student);
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public CourseLocation getCourseLocation() {
+        return courseLocation;
+    }
+
+    public void setCourseLocation(CourseLocation courseLocation) {
+        this.courseLocation = courseLocation;
     }
 }

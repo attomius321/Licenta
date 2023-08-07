@@ -18,7 +18,9 @@ public class PopulateDBConfig {
             StudentRepository studentRepository,
             TeacherRepository teacherRepository,
             UniversityRepository universityRepository,
-            CourseScheduleRepository courseScheduleRepository) {
+            CourseScheduleRepository courseScheduleRepository,
+            CourseRepository courseRepository,
+            CourseLocationRepository courseLocationRepository) {
         return args -> {
             User user_student1 = new User();
             user_student1.setEmail("student1@gmail.com");
@@ -91,18 +93,30 @@ public class PopulateDBConfig {
 
             teacherRepository.saveAll(List.of(teacher1, teacher2));
 
+            Course course1 = new Course();
+            course1.setName("Football");
+
+            Course course2 = new Course();
+            course2.setName("Gym");
+
+            courseRepository.saveAll(List.of(course1, course2));
+
+            CourseLocation cl1 = new CourseLocation();
+            cl1.setName("Baza 1");
+
+            CourseLocation cl2 = new CourseLocation();
+            cl2.setName("Baza 2");
+
+            courseLocationRepository.saveAll(List.of(cl1, cl2));
+
             CourseSchedule cs1 = new CourseSchedule(4, 2);
+            cs1.setCourse(course1);
+            cs1.setCourseLocation(cl1);
             CourseSchedule cs2 = new CourseSchedule(3, 1);
+            cs2.setCourse(course2);
+            cs2.setCourseLocation(cl2);
 
             courseScheduleRepository.saveAll(List.of(cs1, cs2));
-
-            student1.addCourseSchedule(cs1);
-
-            studentRepository.save(student1);
-
-            student2.addCourseSchedule(cs1);
-            student2.addCourseSchedule(cs2);
-            studentRepository.save(student2);
         };
     }
 }
