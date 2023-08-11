@@ -1,6 +1,8 @@
 package com.management.app.model;
 
+import com.management.app.security.entities.User;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.*;
 
@@ -13,7 +15,11 @@ public class Teacher {
     )
     private UUID id;
 
-    private String name;
+    @Getter
+    private String firstName;
+
+    @Getter
+    private String lastName;
 
     @ManyToOne
     @JoinColumn(name = "university_id")
@@ -42,12 +48,12 @@ public class Teacher {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public University getUniversity() {
@@ -84,11 +90,4 @@ public class Teacher {
         courses.remove(course);
     }
 
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

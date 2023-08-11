@@ -1,5 +1,6 @@
 package com.management.app.model;
 
+import com.management.app.security.entities.User;
 import jakarta.persistence.*;
 
 import java.util.*;
@@ -27,6 +28,10 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "course_schedule_id")
     )
     private Set<CourseSchedule> courseSchedules = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "university_id")
+    private University university;
 
     public Student() { }
 

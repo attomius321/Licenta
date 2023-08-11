@@ -1,0 +1,14 @@
+\babel@toc {romanian}{}\relax 
+\contentsline {section}{\numberline {1}\Large \centering \uppercase {Introducere}}{3}{}%
+\contentsline {section}{\numberline {2}\Large \centering \uppercase {Tehnologii web}}{4}{}%
+\contentsline {subsection}{\numberline {2.1}Java}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Javascript}{4}{}%
+\contentsline {subsection}{\numberline {2.3}Typescript}{5}{}%
+\contentsline {subsection}{\numberline {2.4}Angular}{6}{}%
+\contentsline {subsection}{\numberline {2.5}Spring Boot}{6}{}%
+\contentsline {subsection}{\numberline {2.6}Spring Data JPA}{6}{}%
+\contentsline {subsection}{\numberline {2.7}PostgreSQL}{6}{}%
+\contentsline {section}{\numberline {3}\Large \centering \uppercase {Proiectarea}}{7}{}%
+\contentsline {section}{\numberline {4}\Large \centering \uppercase {Implementare}}{8}{}%
+\contentsline {section}{\numberline {5}\Large \centering \uppercase {Testare si instalare}}{9}{}%
+\contentsline {section}{\numberline {6}\Large \centering \uppercase {Concluzii}}{10}{}%

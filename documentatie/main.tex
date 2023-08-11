@@ -1,0 +1,144 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[romanian]{babel}
+\AddToHook{cmd/section/before}{\clearpage}
+\usepackage{sectsty}
+\usepackage{extsizes}
+\usepackage{multicol,lipsum}
+\usepackage
+[
+        a4paper,% other options: a3paper, a5paper, etc
+        left=2cm,
+        right=2cm,
+        top=2.5cm,
+        bottom=2.5cm
+]
+{geometry}
+\usepackage{indentfirst}
+\usepackage[indent]{parskip}
+
+\begin{document}
+    \begin{titlepage}
+    \vspace*{\fill}
+    \begin{center}
+        \huge{\textbf{\uppercase{Managementul activitatilor sportive din cadrul UPT}}}
+    \end{center}
+    \vfill
+    \begin{flushleft}
+        \Large{
+            \textbf{Candidat: Antonyo Topolniceanu}
+            \newline
+            \newline
+            \textbf{Coordonator științific: Conf.dr.ing. Ciprian-Bogdan Chirilă}
+        }
+        \newline
+        \newline
+    \end{flushleft}
+    \begin{center}
+        \Large{
+            Septembrie 2023
+        }
+    \end{center}
+    \end{titlepage}
+
+    \tableofcontents
+
+    \section*{\huge\centering{\uppercase{Abstract}}}
+
+    \section{\Large\centering\uppercase{Introducere}}
+
+    \section{\Large\centering\uppercase{Tehnologii web}}
+
+    \subsection{Java}
+    Java a fost creat de către o echipă de cercetători condusă de către James
+    Gosling, la Sun Microsystems, pentru a facilita comunicarea dintre dispozitivele
+    electronice de consum. Edificarea limbajului de programare Java a început în anul 1991 și,
+    în scurt timp, concentrarea echipei s-a schimbat pe o nouă nișă, World Wide Web.
+    Java a fost lansat pentru prima dată în 1995, iar capacitățile acestuia de a oferi
+    interactivitate și control multimedia a arătat că este deosebit de potrivit pentru Web.
+    
+    Până la sfârșitul anilor 1990, Java a adus multimedia pe internet și a început să se extindă
+    dincolo de Web, alimentând dispozitive de consum, computere, chiar și computerul de bord al
+    roverelor de explorare pe Marte ale NASA. Datorită popularității, Sun Microsystems a creat diferite
+    varietăți de Java pentru diferite scopuri, inclusiv Java SE pentru computerele de consum, Java ME pentru 
+    dispozitivele incorporate și Java EE pentru servere de internet și supercomputere.
+
+    Diferența dintre modul de funcționare Java și alte limbaje de programare a fost 
+    revoluționară. Codul în alte limbi este mai întăi tradus de un compilator în instrucțiuni pentru un anumit tip de computer. În schimb,
+    compilatorul Java transformă codul în Bytecode, care este apoi interpretat de softwareul numit Java Runtime Environment
+    (JRE) sau mașină virtuală Java. JRE acționează ca un computer virtual care interpretează Bytecode și îl traduce pentru
+    computerul gazdă. Din acest motiv, codul Java poate fi scris în același mod pentru mai multe platforme 
+    ("Write Once, Run Everywhere"), ceea ce a contribuit la popularitatea să pentru utilizarea pe Internet,
+    unde multe tipuri diferite de computere pot prelua aceeași pagină Web.
+    
+    În ciuda asemănării numelor, limbajul JavaScript care a fost conceput pentru a rula în browserele web nu face parte din Java.
+    Inițial se numea Mocha și apoi LiveScript înainte ca Netscape să primească o licență de marketing de la Sun Microsystems.
+    \subsection{Javascript}
+    Dezvoltat de Netscape în colaborare cu Sun Microsystems, JavaScript este una dintre cele mai populare tehnologii de bază ale web. De la
+    începuturile sale, a fost o parte integrantă a aplicațiilor web, realizând interactivitatea și dinamica paginilor web.
+
+    Începând cu 2023, 98.7\% dintre site-uri folosesc Javascript în partea clientului pentru prelucrarea comportamentului
+    al paginii web, deseori încorporând librării third-party. Toate browserele web majore au un interpretor JavaScript dedicat pentru a executa
+    codul pe dispozitivele utilizatorilor.
+    
+    Este un limbaj de nivel înalt, adesea compilat just-in-time, care se conformează standardului ECMAScript. Este un limbaj de programare orientat de obiecte
+    bazate pe prototip și funcții de primă clasă. Include tipuri dinamice. Este multi-paradigmă și acceptă stiluri de programare bazate pe
+    evenimente funcționale și imperative. Are interfețe de programare a aplicațiilor (API-uri) pentru lucrul cu text, date, expresii regulate, 
+    structuri de date și manipulare de DOM (Document Object Model).
+
+    Interpretoarele JavaScript au fost utilizate inițial doar în browserele web, dar acum sunt componente de bază ale unor servere și ale unor
+    varietăți de aplicații, cel mai popular sistem de rulare folosit în aceste scopuri fiind Node.js.
+    
+    Weak typing-ul limbajului de programare JavaScript poate creea foarte ușor erori. În alte limbaje, cum ar fi Java și C++, trebuie specificat
+    în mod explicit tipul unui variabile. Cu toate acestea, în JavaScript, interpretorul deduce automat tipul de date
+    al unei variabile pe baza valorii care îi este atribuită.
+
+    Constrângerea agresivă de tip este o caracteristică a JavaScript care obligă diferitele tipuri de date să fie compatibile între ele. De exemplu
+    dacă încercați să atribuiți un număr unei variabile de tip string, JavaScript va converti automatul numărul într-un string, indiferent de valoarea inițială.
+    Prin urmare, acest lucru poate duce la rezultate neașteptate și poate fi dificil de depanat.
+
+    Din cauza acestor deficiențe, pentru dezvoltarea de aplicații pe scară largă, Microsoft a creat TypeScript.
+    \subsection{Typescript}
+    Prin definiție, „TypeScript este JavaScript pentru dezvoltarea de aplicații scalabile”.
+    
+    TypeScript este un limbaj puternic tipizat, orientat pe obiecte, compilat. A fost proiectat de Anders Hejlsberg (designer de C\#) 
+    la Microsoft. TypeScript este atât un limbaj, cât și un set de instrumente. TypeScript este un superset tip de JavaScript compilat 
+    în JavaScript. Cu alte cuvinte, TypeScript este JavaScript plus câteva caracteristici suplimentare.
+    
+    A fost lansat publicului în octombrie 2012, cu versiunea 0.8, după doi ani de dezvoltare internă la Microsoft.
+    La scurt timp după lansarea publică inițială, limbajul în sine a fost lăudat, dar s-a criticat lipsa suportului matur al multor IDE,
+    în afară de Microsoft Visual Studio, care nu era disponibil pe Linux și OS X la acel moment. Din aprilie 2021, există suport
+    în alte IDE-uri și editori de text, inclusiv Emacs, Vim, WebStorm, Atom și Visual Studio Code al Microsoft.
+    
+    TypeScript este portabil peste browsere, dispozitive și sisteme de operare. Poate rula în orice mediu în care rulează JavaScript. 
+    Spre deosebire de omologii săi, TypeScript nu are nevoie de un VM dedicat sau de un mediu de rulare specific pentru a fi executat.
+
+    Este superior celorlalți omologi ai săi, cum ar fi limbajele de programare CoffeeScript și Dart, într-un mod în care TypeScript
+    este JavaScript extins. În schimb, limbaje precum Dart, CoffeeScript sunt limbi noi în sine și necesită un mediu de execuție specific limbii.
+
+    JavaScript este un limbaj interpretat. Prin urmare, trebuie rulat pentru a testa dacă este valid. Înseamnă că scrieți toate codurile doar 
+    pentru a nu găsi nicio ieșire, în cazul în care există o eroare. Prin urmare, trebuie să petreceți ore întregi încercând să găsiți erori în cod. 
+    Transpilerul TypeScript oferă caracteristica de verificare a erorilor. TypeScript va compila codul și va genera erori de compilare, dacă găsește 
+    erori de sintaxă. Acest lucru ajută la evidențierea erorilor înainte de rularea codului.
+
+    JavaScript nu este puternic tipizat. TypeScript vine cu un sistem opțional de tipizare statică și inferență de tip prin TLS (Serviciul de limbaj TypeScript). 
+    Tipul unei variabile, declarată fără tip, poate fi dedus de TLS pe baza valorii sale.
+    \subsection{Angular}
+    \subsection{Spring Boot}
+    \subsection{Spring Data JPA}
+    \subsection{PostgreSQL}
+    
+
+    \section{\Large\centering\uppercase{Proiectarea}}
+
+    \section{\Large\centering\uppercase{Implementare}}
+
+    \section{\Large\centering\uppercase{Testare si instalare}}
+
+    \section{\Large\centering\uppercase{Concluzii}}
+
+    \section*{\Large\centering{\uppercase{Bibliografie}}}
+
+\end{document}

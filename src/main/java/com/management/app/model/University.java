@@ -19,6 +19,9 @@ public class University {
     @OneToMany(mappedBy = "university")
     private Set<Teacher> teacherSet;
 
+    @OneToMany(mappedBy = "university")
+    private Set<Student> studentSet;
+
     public UUID getId() {
         return id;
     }
@@ -41,5 +44,13 @@ public class University {
 
     public void setTeacherSet(Set<Teacher> teacherSet) {
         this.teacherSet = teacherSet;
+    }
+
+    public Set<Student> getStudentSet() {
+        return studentSet;
+    }
+
+    public void setStudentSet(Set<Student> studentSet) {
+        this.studentSet = studentSet;
     }
 }
