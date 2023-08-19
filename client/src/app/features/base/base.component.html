@@ -1,0 +1,24 @@
+<div class="base">
+    <mat-toolbar class="base__toolbar">
+        <button mat-icon-button class="example-icon" (click)="openCloseSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>EFS</span>
+        <span class="spacer"></span>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+    </mat-toolbar>
+    <mat-drawer-container class="base__container" autosize>
+        <mat-drawer class="base__container__sidenav" #sidenav mode="side">
+            <div *ngFor="let item of sidenav_config" class="base__container__sidenav__item"
+                (click)="moveTo(item.route)">
+                <mat-icon class="base__container__sidenav__item__icon" *ngIf="item.icon">
+                    {{item.icon}}
+                </mat-icon>
+                <span class="base__container__sidenav__item__text">{{item.title}}</span>
+            </div>
+        </mat-drawer>
+        <router-outlet></router-outlet>
+    </mat-drawer-container>
+</div>

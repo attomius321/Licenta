@@ -1,4 +1,25 @@
 \documentclass[a4paper,12pt]{article}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 \usepackage{graphicx} % Required for inserting images
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -13,7 +34,7 @@
         left=2cm,
         right=2cm,
         top=2.5cm,
-        bottom=2.5cm
+        bottom=2cm
 ]
 {geometry}
 \usepackage{indentfirst}
@@ -36,6 +57,11 @@
         \newline
         \newline
     \end{flushleft}
+    \begin{center}
+        \Large{
+            \textbf{Timișoara}
+        }
+    \end{center}
     \begin{center}
         \Large{
             Septembrie 2023
@@ -70,23 +96,26 @@
     compilatorul Java transformă codul în Bytecode, care este apoi interpretat de softwareul numit Java Runtime Environment
     (JRE) sau mașină virtuală Java. JRE acționează ca un computer virtual care interpretează Bytecode și îl traduce pentru
     computerul gazdă. Din acest motiv, codul Java poate fi scris în același mod pentru mai multe platforme 
-    ("Write Once, Run Everywhere"), ceea ce a contribuit la popularitatea să pentru utilizarea pe Internet,
+    ("Write Once, Run Everywhere"), ceea ce a contribuit la popularitatea sa pentru utilizarea pe Internet,
     unde multe tipuri diferite de computere pot prelua aceeași pagină Web.
     
     În ciuda asemănării numelor, limbajul JavaScript care a fost conceput pentru a rula în browserele web nu face parte din Java.
     Inițial se numea Mocha și apoi LiveScript înainte ca Netscape să primească o licență de marketing de la Sun Microsystems.
     \subsection{Javascript}
     Dezvoltat de Netscape în colaborare cu Sun Microsystems, JavaScript este una dintre cele mai populare tehnologii de bază ale web. De la
-    începuturile sale, a fost o parte integrantă a aplicațiilor web, realizând interactivitatea și dinamica paginilor web.
+    începuturile sale, a fost o parte integrantă a aplicațiilor web, realizând interactivitatea și dinamica acestora.
 
     Începând cu 2023, 98.7\% dintre site-uri folosesc Javascript în partea clientului pentru prelucrarea comportamentului
-    al paginii web, deseori încorporând librării third-party. Toate browserele web majore au un interpretor JavaScript dedicat pentru a executa
+    paginilor web, deseori încorporând librării third-party. Toate browserele web majore au un interpretor JavaScript dedicat pentru a executa
     codul pe dispozitivele utilizatorilor.
     
-    Este un limbaj de nivel înalt, adesea compilat just-in-time, care se conformează standardului ECMAScript. Este un limbaj de programare orientat de obiecte
+    Este un limbaj de nivel înalt, adesea compilat just-in-time, la run-time, care se conformează standardului ECMAScript. Este un limbaj de programare orientat pe obiecte
     bazate pe prototip și funcții de primă clasă. Include tipuri dinamice. Este multi-paradigmă și acceptă stiluri de programare bazate pe
-    evenimente funcționale și imperative. Are interfețe de programare a aplicațiilor (API-uri) pentru lucrul cu text, date, expresii regulate, 
-    structuri de date și manipulare de DOM (Document Object Model).
+    evenimente, funcționale și imperative. Are interfețe de programare a aplicațiilor pentru lucrul cu text, date, expresii regulate, 
+    structuri de date și manipulare de Document Object Model.
+
+    ECMAScript este un standard pentru limbajele de scriptare, incluzând JavaScript JScript și ActionScript. De asemenea este cunoscut ca un standard
+    care să asigure interoperabilitatea paginilor web în diferite browsere.
 
     Interpretoarele JavaScript au fost utilizate inițial doar în browserele web, dar acum sunt componente de bază ale unor servere și ale unor
     varietăți de aplicații, cel mai popular sistem de rulare folosit în aceste scopuri fiind Node.js.
@@ -103,7 +132,7 @@
     \subsection{Typescript}
     Prin definiție, „TypeScript este JavaScript pentru dezvoltarea de aplicații scalabile”.
     
-    TypeScript este un limbaj puternic tipizat, orientat pe obiecte, compilat. A fost proiectat de Anders Hejlsberg (designer de C\#) 
+    TypeScript este un limbaj puternic tipizat, orientat pe obiecte, compilat. A fost proiectat de Anders Hejlsberg
     la Microsoft. TypeScript este atât un limbaj, cât și un set de instrumente. TypeScript este un superset tip de JavaScript compilat 
     în JavaScript. Cu alte cuvinte, TypeScript este JavaScript plus câteva caracteristici suplimentare.
     
@@ -116,16 +145,143 @@
     Spre deosebire de omologii săi, TypeScript nu are nevoie de un VM dedicat sau de un mediu de rulare specific pentru a fi executat.
 
     Este superior celorlalți omologi ai săi, cum ar fi limbajele de programare CoffeeScript și Dart, într-un mod în care TypeScript
-    este JavaScript extins. În schimb, limbaje precum Dart, CoffeeScript sunt limbi noi în sine și necesită un mediu de execuție specific limbii.
+    este JavaScript extins. În schimb, limbaje precum Dart, CoffeeScript sunt limbaje noi în sine și necesită un mediu de execuție specific limbii.
 
-    JavaScript este un limbaj interpretat. Prin urmare, trebuie rulat pentru a testa dacă este valid. Înseamnă că scrieți toate codurile doar 
-    pentru a nu găsi nicio ieșire, în cazul în care există o eroare. Prin urmare, trebuie să petreceți ore întregi încercând să găsiți erori în cod. 
+    JavaScript este un limbaj interpretat. Prin urmare, trebuie rulat pentru a testa dacă este valid, ceea ce poate duce la ore întregi de debugging. 
     Transpilerul TypeScript oferă caracteristica de verificare a erorilor. TypeScript va compila codul și va genera erori de compilare, dacă găsește 
     erori de sintaxă. Acest lucru ajută la evidențierea erorilor înainte de rularea codului.
 
-    JavaScript nu este puternic tipizat. TypeScript vine cu un sistem opțional de tipizare statică și inferență de tip prin TLS (Serviciul de limbaj TypeScript). 
+    JavaScript nu este puternic tipizat. TypeScript vine cu un sistem opțional de tipizare statică și inferență de tip prin Serviciul de limbaj TypeScript, denumit TLS. 
     Tipul unei variabile, declarată fără tip, poate fi dedus de TLS pe baza valorii sale.
     \subsection{Angular}
+    Angular este o platformă de dezvoltare software, construită pe TypeScript. Că platformă, Angular are un cadru bazat pe component pentru construirea
+    de aplicații web scalabile, o colecție de biblioteci bine integrate care acoperă o mare varietate de funcții, inclusiv rutare, gestionare a formularelor, 
+    comunicare client-server și multe altele. De asemenea, are o suită de instrumente pentru developeri, care facilitează dezvoltarea, construirea, testarea
+    și actualizarea codului.
+
+    Ecosistemul Angular este format dintr-un grup divers de peste 1,7 milioane de developeri, autori de biblioteci și creatori de conținut.
+
+    \subsubsection{Componente}
+    Componentele sunt blocurile principale care compun o aplicație. O componentă include o clasă TypeScript cu un decorator @Component(), un șablon HTML și stiluri CSS.
+    Decoratorul @Component() specifică următoarele informații:
+    \begin{itemize}
+        \item Un selector CSS care definește modul în care componenta este utilizată într-un șablon de HTML. Elementele HTML din șablon care se potrivesc cu acest
+        selector devin instanțe ale componentei.
+        \item Un șablon HTML care dictează la Angular cum să randeze componenta.
+        \item Un set opțional de stiluri CSS care definesc aspectul elementelor HTML ale șablonului.
+    \end{itemize}
+
+    Următoarea este o componentă Angular minimală:
+    \begin{lstlisting}
+        //hello-world.component.ts
+        import { Component } from '@angular/core';
+        
+        @Component({
+            selector: 'hello-world',
+            template: `
+                <h2>Hello World</h2>
+                <p>This is my first component!</p>
+            `
+        })
+        export class HelloWorldComponent {
+            // Codul ce descrie comportamentul componentei.
+        }
+    \end{lstlisting}
+
+    Pentru a utiliza această componentă, trebuie adăugat selectorul componentei într-un șablon:
+    \begin{lstlisting}
+        <hello-world></hello-world>
+    \end{lstlisting}
+    Când Angular randează această componentă, DOM-ul rezultat arată astfel:
+    \begin{lstlisting}
+        <hello-world>
+            <h2>Hello World</h2>
+            <p>This is my first component!</p>
+        </hello-world>
+    \end{lstlisting}
+
+    \subsubsection{Șabloane}
+    Fiecare componentă are un șablon HTML care declară cum se randează acea componentă. Definirea acestui șablon se poate face fie în linie, fie într-un fiser separat.
+
+    Angular adaugă elemente de sintaxă care extind HTML, pentru a facilita inserarea de valori dinamice din componenta Angular. Actualizează automat DOM-ul atunci când starea
+    componentei se schimbă. O aplicație a acestei caracteristici este inserarea de text dinamic, așa cum se arată în exemplul următor.
+    \begin{lstlisting}
+        //hello-world-interpolation.component.html
+        <p>{{ message }}</p>
+    \end{lstlisting}
+    Valoarea mesajului provine din clasa de componente:
+    \begin{lstlisting}
+        //hello-world-interpolation.component.ts
+        import { Component } from '@angular/core';
+
+        @Component ({
+        selector: 'hello-world-interpolation',
+        templateUrl: './hello-world-interpolation.component.html'
+        })
+        export class HelloWorldInterpolationComponent {
+            message = 'Hello, World!';
+        }
+    \end{lstlisting}
+    Când aplicația încarcă componenta și șablonul acesteia, utilizatorul vede următoarele:
+    \begin{lstlisting}
+        //hello-world-interpolation.component.html
+        <p>Hello, World!</p>
+    \end{lstlisting}
+    Acoladele duble îi indică lui Angular să interpoleze conținutul din ele.
+
+    Angular acceptă, de asemenea, legături de proprietăți, pentru a facilita transmiterea valorilor dintre componente și pentru a seta diferite proprietăți.
+    \begin{lstlisting}
+        <p
+            [id]="sayHelloId"
+            [style.color]="fontColor">
+            Se seteaza fontColor in clasa typescript al componentei
+        </p>
+    \end{lstlisting}
+
+    Utilizarea parantezelor drepte indică legătura dintre proprietatea sau atributul la o valoare din clasa componentelor.
+
+    Pentru a asculta acțiunile utilizatorului, cum ar fi apăsările de taste, mișcările mouse-ului, clickurile, se definesc ascultători de evenimente, specificând
+    numele evenimentului între paranteze rotunde:
+    \begin{lstlisting}
+        <button
+            (click)="sayMessage()">
+            functia sayMessage este definita in clasa typescript al componentei
+        </button>
+    \end{lstlisting}
+
+    \subsubsection{Dependency Injection}
+
+    Dependency Injection este partea din cadrul Angular care oferă componentelor acces la servicii și alte resurse. Angular oferă posibilitatea de a 
+    injecta un serviciu într-o componentă pentru a oferi acelei componente acces la serviciu.
+
+    Decoratorul @Injectable() definește o clasă ca serviciu în Angular și îi permite lui Angular să o injecteze într-o componentă ca dependență. 
+    De asemenea, decoratorul @Injectable() indică faptul că o componentă, clasă sau NgModule are o dependență de un serviciu.
+
+    Injectorul este mecanismul principal. Angular creează un injector la nivel de aplicație în timpul procesului de bootstrap și injectoare suplimentare după cum este necesar.
+
+    Un injector creează dependențe și menține un container de instanțe de dependență pe care le reutilizează, dacă este posibil. Un furnizor este un obiect care îi spune 
+    unui injector cum să obțină sau să creeze o dependență.
+    \subsubsection{Servicii}
+
+    Serviciul este o categorie largă care cuprinde orice valoare, funcție sau caracteristică de care are nevoie o aplicație. 
+    Un serviciu este de obicei o clasă cu un scop restrâns si bine definit. Angular stie sa distinga componentele de servicii pentru a creste modularitatea si reutilizarea.
+
+    Im mod ideal, sarcina unei componente este sa se ocupe doar de experienta utilizatorului. O componenta ar trebui sa prezinte proprietati si metode
+    pentru legarea datelor pentru a media intre vizualizare si logica aplicatiei.
+
+    Serviciile sunt bune pentru sarcini precum preluarea datelor de pe server, validarea intrărilor utilizatorului sau conectarea direct la consolă. Prin definirea unor
+    astfel de sarcini de procesare într-o clasă de servicii injectabilă, acele sarcini devin disponibile oricărei componente. De asemenea, pentru a face aplicația mai 
+    adaptabilă, se pot injecta furnizori diferiți ai aceluiași tip de serviciu, după caz, în circumstanțe diferite.
+
+    În Angular, Dependency Injection face aceste servicii disponibile pentru componente.
+
+    \subsubsection{Module}
+    Aplicațiile Angular sunt modulare și Angular are propriul său sistem de modularitate numit NgModules. NgModules sunt containere pentru un bloc coeziv de 
+    cod dedicat unui domeniu de aplicație, unui flux de lucru sau unui set de capabilități strâns legate. Ele pot conține componente, furnizori de servicii și 
+    alte fișiere de cod al căror domeniu este definit de NgModule care le conține. Ei pot importa funcționalități care sunt exportate din alte NgModules și pot 
+    exporta funcționalitatea selectată pentru a fi utilizate de alte NgModules.
+
+    Fiecare aplicație Angular are cel puțin o clasă NgModule, modulul rădăcină, care este denumit în mod convențional AppModule și rezidă într-un fișier numit app.module.ts. 
     \subsection{Spring Boot}
     \subsection{Spring Data JPA}
     \subsection{PostgreSQL}
@@ -140,5 +296,6 @@
     \section{\Large\centering\uppercase{Concluzii}}
 
     \section*{\Large\centering{\uppercase{Bibliografie}}}
-
+ 
+    
 \end{document}
