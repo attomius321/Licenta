@@ -5,18 +5,24 @@
         </button>
         <span>EFS</span>
         <span class="spacer"></span>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-            <mat-icon>account_circle</mat-icon>
-        </button>
+        <img class="base__toolbar__logo" src="./../../../assets/images/logo3.jpeg" />
     </mat-toolbar>
     <mat-drawer-container class="base__container" autosize>
         <mat-drawer class="base__container__sidenav" #sidenav mode="side">
-            <div *ngFor="let item of sidenav_config" class="base__container__sidenav__item"
-                (click)="moveTo(item.route)">
-                <mat-icon class="base__container__sidenav__item__icon" *ngIf="item.icon">
-                    {{item.icon}}
-                </mat-icon>
-                <span class="base__container__sidenav__item__text">{{item.title}}</span>
+            <div class="base__container__sidenav__start">
+                <button class="base__container__sidenav__item" mat-button *ngFor="let item of sidenav_config.start"
+                    (click)="moveTo(item.route)">
+                    <mat-icon>{{item.icon}}</mat-icon>
+                    {{item.title}}
+                </button>
+            </div>
+
+            <div class="base__container__sidenav__end">
+                <button class="base__container__sidenav__item" mat-button *ngFor="let item of sidenav_config.end"
+                    (click)="moveTo(item.route)">
+                    <mat-icon>{{item.icon}}</mat-icon>
+                    {{item.title}}
+                </button>
             </div>
         </mat-drawer>
         <router-outlet></router-outlet>

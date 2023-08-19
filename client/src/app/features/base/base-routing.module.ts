@@ -19,6 +19,33 @@ const routes: Routes = [
                 loadChildren: () => import('./../teachers-view/teachers-view.module').then(m => m.TeachersViewModule)
             }
         ]
+    },
+    {
+        path: 'scheduler',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./../scheduler-view/scheduler-view.module').then(m => m.SchedulerViewModule)
+            }
+        ]
+    },
+    {
+        path: 'universities',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./../universities-view/universities-view.module').then(m => m.UniversitiesViewModule)
+            }
+        ]
+    },
+    {
+        path: 'sportbases',
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./../sport-bases-view/sport-bases-view.module').then(m => m.SportBasesViewModule)
+            }
+        ]
     }
 ];
 

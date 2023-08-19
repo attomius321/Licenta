@@ -9,34 +9,35 @@
 
     &__toolbar {
         background-color: var(--efc-primary-color);
-        color: var(--efc-text-color);
+        border-bottom: 1px solid var(--efc-border);
+
+        &__logo {
+            height: 50px;
+        }
     }
 
     &__container {
         height: 100%;
+
+        ::ng-deep mat-drawer-content {
+            background-color: #FFF;
+        }
 
         &__sidenav {
             background-color: var(--efc-primary-color);
             color: var(--efc-text-color);
             width: 18%;
 
-            &__item {
-                padding: 12px 4px;
-                font-size: 18px;
-                font-weight: 500;
+            ::ng-deep .mat-drawer-inner-container {
                 display: flex;
-                align-items: center;
-                cursor: pointer;
+                flex-direction: column;
+                justify-content: space-between;
+            }
 
-                &:hover {
-                    background-color: var(--efc-primary-hover);
-                }
-
-                &__icon {}
-
-                &__text {
-                    margin-left: 10px;
-                }
+            &__item {
+                width: 90%;
+                justify-content: flex-start;
+                margin: 4px 8px;
             }
         }
     }

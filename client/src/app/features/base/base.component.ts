@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SNConfig } from './config/sidenav.config';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SidenavConfig } from './types/base.types';
 
 @Component({
   selector: 'app-base',
@@ -12,7 +13,7 @@ export class BaseComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   public opened!: boolean;
 
-  public sidenav_config = SNConfig;
+  public sidenav_config: SidenavConfig = SNConfig;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
