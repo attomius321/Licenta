@@ -11,7 +11,7 @@
         <mat-drawer class="base__container__sidenav" #sidenav mode="side">
             <div class="base__container__sidenav__start">
                 <button class="base__container__sidenav__item" mat-button *ngFor="let item of sidenav_config.start"
-                    (click)="moveTo(item.route)">
+                    (click)="navigateTo(item)" [ngClass]="{'active-button': isActive(item.route)}">
                     <mat-icon>{{item.icon}}</mat-icon>
                     {{item.title}}
                 </button>
@@ -19,7 +19,7 @@
 
             <div class="base__container__sidenav__end">
                 <button class="base__container__sidenav__item" mat-button *ngFor="let item of sidenav_config.end"
-                    (click)="moveTo(item.route)">
+                    (click)="navigateTo(item)">
                     <mat-icon>{{item.icon}}</mat-icon>
                     {{item.title}}
                 </button>

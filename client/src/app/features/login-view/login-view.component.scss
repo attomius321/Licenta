@@ -1,0 +1,33 @@
+.login {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__card {
+
+        &__title {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+
+            &__image {
+                height: 70px;
+            }
+        }
+
+        &__content {
+            &__form {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        &__buttons {
+
+            &__button {
+                width: 100%;
+            }
+        }
+    }
+}

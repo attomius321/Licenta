@@ -6,10 +6,15 @@
     --efc-text-color-reverse: #333;
     --efc-primary-hover: #622B8C;
     --efc-border: #E0E0E0;
+    --efc-upt-blue: #00145F;
 }
 
 html,
 body {
+    --mdc-filled-text-field-caret-color: var(--efc-upt-blue);
+    --mdc-outlined-text-field-caret-color: var(--efc-upt-blue);
+    --mdc-filled-text-field-focus-active-indicator-color: var(--efc-upt-blue);
+    --mdc-filled-text-field-focus-label-text-color: var(--efc-upt-blue);
     height: 100%;
 }
 

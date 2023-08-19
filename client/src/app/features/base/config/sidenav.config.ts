@@ -32,7 +32,8 @@ export const SNConfig: SidenavConfig = {
         {
             title: 'Logout',
             route: 'login',
-            icon: 'logout'
+            icon: 'logout',
+            isLogout: true
         }
     ]
 }

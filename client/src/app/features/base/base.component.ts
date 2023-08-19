@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SNConfig } from './config/sidenav.config';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SidenavConfig } from './types/base.types';
+import { SidenavConfig, SidenavItem } from './types/base.types';
 
 @Component({
   selector: 'app-base',
@@ -22,7 +22,11 @@ export class BaseComponent {
     this.opened = !this.opened;
   }
 
-  public moveTo(route: string): void {
-    this.router.navigate([route], { relativeTo: this.activatedRoute })
+  public navigateTo(snItem: SidenavItem): void {
+    !snItem.isLogout ? this.router.navigate([snItem.route], { relativeTo: this.activatedRoute }) : this.router.navigate([snItem.route]);
+  }
+
+  public isActive(route: string): boolean {
+    return this.router.url.includes(route);
   }
 }
