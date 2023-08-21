@@ -73,7 +73,15 @@ body {
     }
 
     &__table {
-        padding: 0 10px;
+
+        .mat-mdc-header-row {
+            background: #d3d3d369;
+            height: 40px;
+        }
+
+        tr {
+            height: 30px;
+        }
 
         &__paginator {
             border-top: 1px solid var(--efc-border);
