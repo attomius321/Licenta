@@ -22,7 +22,8 @@ export class LoginViewComponent {
   public login() {
     this.authService.login(this.signupForm.getRawValue()).pipe(
       tap((data) => {
-        this.tokenStorage.saveToken(data.token);
+        this.tokenStorage.saveToken(data.jwtAuthenticationResponse.token);
+        this.tokenStorage.saveUser(data.user);
         this.router.navigate(['base/teachers']);
       }),
       catchError((err) => throwError(() => err))

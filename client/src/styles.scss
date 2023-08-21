@@ -22,3 +22,104 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.mdc-button:hover {
+    color: #FFF;
+
+    mat-icon {
+        color: #FFF;
+    }
+
+    .mdc-button__ripple {
+        background-color: #00145fbd;
+        background: #00145fbd;
+    }
+
+    .mdc-button__label {
+        color: #FFF;
+    }
+}
+
+.active-button {
+    color: #FFF;
+
+    mat-icon {
+        color: #FFF;
+    }
+
+    .mdc-button__ripple {
+        background-color: #00145F;
+        background: #00145F;
+    }
+
+    .mdc-button__label {
+        color: #FFF;
+    }
+}
+
+.page {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__top {
+        font-size: 20px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        min-height: 60px;
+        border-bottom: 1px solid var(--efc-border);
+        padding: 0 10px;
+    }
+
+    &__table {
+        padding: 0 10px;
+
+        &__paginator {
+            border-top: 1px solid var(--efc-border);
+            position: sticky;
+            bottom: 0;
+        }
+    }
+}
+
+.snackbar {
+    color: #FFF;
+    border-radius: 4px;
+
+    .mdc-snackbar__surface {
+        background-color: #333 !important;
+        color: #FFF;
+    }
+
+    button {
+        .mdc-button__label {
+            color: #FFF !important;
+        }
+    }
+
+    .mdc-button:hover .mdc-button__ripple {
+        background-color: transparent !important;
+    }
+}
+
+.error-snackbar {
+    color: #FFF;
+    border-radius: 4px;
+
+    .mdc-snackbar__surface {
+        background-color: #8E1F23 !important;
+        color: #FFF;
+    }
+
+    button {
+        .mdc-button__label {
+            color: #FFF !important;
+        }
+    }
+
+    .mdc-button:hover .mdc-button__ripple {
+        background-color: transparent !important;
+    }
+
+}

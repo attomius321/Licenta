@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SNConfig } from './config/sidenav.config';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,13 +11,16 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.scss']
 })
-export class BaseComponent {
+export class BaseComponent implements AfterViewInit {
   @ViewChild('sidenav') sidenav!: MatSidenav;
-  public opened!: boolean;
+  public opened: boolean = true;
 
   public sidenav_config: SidenavConfig = SNConfig;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private tokenStorageService: TokenStorageService) {
+  }
+
+  ngAfterViewInit(): void {
   }
 
   public openCloseSidenav(): void {
@@ -31,6 +34,10 @@ export class BaseComponent {
 
   public isActive(route: string): boolean {
     return this.router.url.includes(route);
+  }
+
+  public getUserEmail() {
+
   }
 
   private logout() {

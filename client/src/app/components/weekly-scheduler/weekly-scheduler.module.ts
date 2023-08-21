@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WeeklySchedulerComponent } from './weekly-scheduler.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ColorGeneratorService } from './services/color-generator.service';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
     declarations: [
@@ -9,10 +11,14 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ],
     imports: [
         CommonModule,
-        DragDropModule
+        DragDropModule,
+        MatCardModule
     ],
     exports: [
         WeeklySchedulerComponent
+    ],
+    providers: [
+        ColorGeneratorService
     ]
 })
 export class WeeklySchedulerModule { }

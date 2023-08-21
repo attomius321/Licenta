@@ -17,6 +17,8 @@ public class CourseLocation {
 
     private String name;
 
+    private String address;
+
     @OneToMany(mappedBy="courseLocation")
     private Set<CourseSchedule> courseSchedules;
 
@@ -28,16 +30,24 @@ public class CourseLocation {
         this.id = id;
     }
 
-    public Set<CourseSchedule> getCourseSchedules() {
-        return new HashSet<>(courseSchedules);
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Set<CourseSchedule> getCourseSchedules() {
+        return new HashSet<>(courseSchedules);
     }
 
     public void addCourseSchedule(CourseSchedule courseSchedule) {

@@ -8,25 +8,32 @@
         </div>
     </div>
     <div class="weekly-scheduler__hours" cdkDropListGroup>
-        <div class="weekly-scheduler__hours__section" *ngFor="let hour of hoursInterval">
+        <div class="weekly-scheduler__hours__section" *ngFor="let hour of hoursInterval; let hourIndex = index">
             <div class="hour">
                 {{hour}}
             </div>
-            <div class="weekly-scheduler__hours__section__schedule" *ngFor="let day of labelOfDays; let i = index">
-                <div cdkDropList [cdkDropListData]="weeklySchedulerData" (cdkDropListDropped)="drop($event)"
-                    *ngFor="let data of weeklySchedulerData">
+            <div cdkDropList [cdkDropListData]="weeklySchedulerData" (cdkDropListDropped)="drop(hour, i+1)"
+                class="weekly-scheduler__hours__section__schedule" [ngClass]="{'lightgrey': hourIndex % 2 == 0 }"
+                *ngFor="let day of labelOfDays; let i = index">
+                <div *ngFor="let data of weeklySchedulerData">
                     <ng-container *ngIf="data.dayOfWeek === i + 1 && data.startsAt === hour">
-                        <div cdkDrag class="schedule-container" [style.background]="data.color">
-                            <div class="title">
-                                {{data.title}} - {{data.by}}
+                        <mat-card cdkDrag (cdkDragStarted)="onDragStart(data)" class="schedule-container"
+                            [style.border]="'2px solid ' + data.color">
+                            <div class="color-container" [style.background]="data.color">
+
                             </div>
-                            <div class="at">
-                                {{data.at | uppercase}}
+                            <div class="details">
+                                <div class="title">
+                                    {{data.title | uppercase}} - {{data.by | uppercase}}
+                                </div>
+                                <div class="at">
+                                    {{data.at | uppercase}}
+                                </div>
+                                <div class="metadata">
+                                    {{data.metadataLabel}}: {{data.metadata}}
+                                </div>
                             </div>
-                            <div class="metadata">
-                                {{data.metadata}}
-                            </div>
-                        </div>
+                        </mat-card>
                     </ng-container>
                 </div>
             </div>

@@ -20,6 +20,8 @@
             align-items: center;
             width: 100%;
             border-right: 1px solid;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         &__day:last-child {
@@ -28,8 +30,11 @@
     }
 
     &__hours {
+        display: flex;
+        flex-direction: column;
+
         &__section {
-            min-height: 100px;
+            min-height: 160px;
             display: flex;
 
             .hour {
@@ -38,6 +43,8 @@
                 display: flex;
                 justify-content: flex-end;
                 padding-right: 6px;
+                font-size: 16px;
+                font-weight: 600;
             }
 
             &__schedule {
@@ -46,6 +53,8 @@
                 flex: 1 1 0px;
                 border-right: 1px solid;
                 flex-direction: column;
+
+                padding: 10px 10px 0px 10px;
             }
 
             &__schedule:last-child {
@@ -57,21 +66,29 @@
 
 .schedule-container {
     position: relative;
-    padding: 4px;
-    margin-top: 4px;
-    margin-right: 10px;
+    font-size: 14px;
     border-radius: 4px;
-    min-height: 50px;
-    width: 94%;
-    -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.75);
-    color: #FFF;
+    min-height: 80px;
+    background: #FFF;
     cursor: pointer;
+    display: flex !important;
+    flex-direction: row;
+    margin-bottom: 10px;
 
-    .metadata {
-        position: absolute;
-        bottom: 0;
-        right: 6px;
+    .color-container {
+        border-radius: 2px 0px 0px 2px;
+        width: 30px;
     }
+
+    .details {
+        padding: 6px;
+
+        .title {
+            font-weight: 600;
+        }
+    }
+}
+
+.lightgrey {
+    background: #d3d3d369;
 }

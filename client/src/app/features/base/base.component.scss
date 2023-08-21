@@ -39,10 +39,13 @@
                 justify-content: flex-start;
                 margin: 4px 8px;
             }
+
+
+            &__end {
+                margin-bottom: 30px;
+                border-top: 1px solid var(--efc-border);
+
+            }
         }
     }
-}
-
-.active-button {
-    background-color: var(--efc-border);
 }

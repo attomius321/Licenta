@@ -8,7 +8,7 @@
         <img class="base__toolbar__logo" src="./../../../assets/images/logo3.jpeg" />
     </mat-toolbar>
     <mat-drawer-container class="base__container" autosize>
-        <mat-drawer class="base__container__sidenav" #sidenav mode="side">
+        <mat-drawer class="base__container__sidenav" #sidenav [opened]="true" mode="side">
             <div class="base__container__sidenav__start">
                 <button class="base__container__sidenav__item" mat-button *ngFor="let item of sidenav_config.start"
                     (click)="navigateTo(item)" [ngClass]="{'active-button': isActive(item.route)}">

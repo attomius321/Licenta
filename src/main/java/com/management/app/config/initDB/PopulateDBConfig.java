@@ -56,12 +56,46 @@ public class PopulateDBConfig {
             );
 
             University university1 = new University();
-            university1.setName("CTI");
+            university1.setName("Arhitectura si Urbanism");
+            university1.setAddress("Str. Traian Lalescu Nr. 2/A 300 223 – Timişoara, Jud. Timiş, România");
 
             University university2 = new University();
-            university2.setName("IS");
+            university2.setName("Automatică şi Calculatoare");
+            university2.setAddress("Bulevardul Vasile Pârvan, Nr. 2 300223 Timişoara, jud. Timiş, România");
 
-            universityRepository.saveAll(List.of(university1, university2));
+            University university3 = new University();
+            university3.setName("Chimie Industrială şi Ingineria Mediului");
+            university3.setAddress("Bulevardul Vasile Pârvan, Nr. 6 300223, Timişoara, jud. Timiş, România");
+
+            University university4 = new University();
+            university4.setName("Construcţii");
+            university4.setAddress("Str. Traian Lalescu Nr. 2 300 223 – Timişoara, Jud. Timiş, România");
+
+            University university5 = new University();
+            university5.setName("Electronică, Telecomunicaţii și Tehnologii Informaționale");
+            university5.setAddress("Bd. Vasile Pârvan, Nr. 2 300223, Timişoara, jud. Timiş, România");
+
+            University university6 = new University();
+            university6.setName("Inginerie Electrică și Energetică");
+            university6.setAddress("Bd. Vasile Pârvan, Nr. 2 300223, Timişoara, jud. Timiş, România");
+
+            University university7 = new University();
+            university7.setName("Inginerie din Hunedoara");
+            university7.setAddress("Str. Revoluţiei, Nr. 5 331128 Hunedoara, România");
+
+            University university8 = new University();
+            university8.setName("Management în Producţie şi Transporturi");
+            university8.setAddress("Strada Remus, nr.14 300191, Timișoara, jud. Timiş, România");
+
+            University university9 = new University();
+            university9.setName("Mecanică");
+            university9.setAddress("Bulevardul Mihai Viteazu Nr. 1 300222 Timişoara, jud. Timiş, România");
+
+            University university10 = new University();
+            university10.setName("Stiinţe ale Comunicării");
+            university10.setAddress("Str. Traian Lalescu Nr. 2 300223 – Timişoara, Jud. Timiş, România");
+
+            universityRepository.saveAll(List.of(university1, university2, university3, university4, university5, university6, university7, university8, university9, university10));
 
             Student student1 = new Student();
             student1.setFirstName("Student");
@@ -106,9 +140,11 @@ public class PopulateDBConfig {
 
             CourseLocation cl1 = new CourseLocation();
             cl1.setName("Baza 1");
+            cl1.setAddress("Timişoara, 300223 Traian Lalescu nr. 2A");
 
             CourseLocation cl2 = new CourseLocation();
             cl2.setName("Baza 2");
+            cl2.setAddress("Timişoara, 300586 Str. Păunescu Podeanu nr.2, (lângă Stadionul Dan Paltinişanu)");
 
             courseLocationRepository.saveAll(List.of(cl1, cl2));
 

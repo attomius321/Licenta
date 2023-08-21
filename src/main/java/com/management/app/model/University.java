@@ -16,6 +16,8 @@ public class University {
 
     private String name;
 
+    private String address;
+
     @OneToMany(mappedBy = "university")
     private Set<Teacher> teacherSet;
 
@@ -36,6 +38,14 @@ public class University {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Set<Teacher> getTeacherSet() {

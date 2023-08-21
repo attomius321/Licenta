@@ -8,6 +8,7 @@ import { LoginViewModule } from './features/login-view/login-view.module';
 import { BaseModule } from './features/base/base.module';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from './interceptors/auth.interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export function tokenGetter() {
   return window.sessionStorage.getItem("auth-token");
@@ -23,7 +24,8 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     LoginViewModule,
     BaseModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [
     authInterceptorProviders

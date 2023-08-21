@@ -1,4 +1,4 @@
-<div class="students">
+<div class="page">
     <!-- <div class="students__actions">
         <button mat-button class="students__actions__button">
             <mat-icon>add</mat-icon>
@@ -9,27 +9,26 @@
             STERGE
         </button>
     </div> -->
-    <table mat-table [dataSource]="dataSource">
+    <div class="page__top">
+        Studenti
+    </div>
+    <table class="page__table" mat-table [dataSource]="dataSource">
 
-        <!-- Position Column -->
         <ng-container matColumnDef="firstName">
             <th mat-header-cell *matHeaderCellDef> Nume </th>
             <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
         </ng-container>
 
-        <!-- Name Column -->
         <ng-container matColumnDef="lastName">
             <th mat-header-cell *matHeaderCellDef> Prenume </th>
             <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
         </ng-container>
 
-        <!-- Weight Column -->
         <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef> Email </th>
             <td mat-cell *matCellDef="let element"> {{element.email}} </td>
         </ng-container>
 
-        <!-- Symbol Column -->
         <ng-container matColumnDef="universityName">
             <th mat-header-cell *matHeaderCellDef> Facultate </th>
             <td mat-cell *matCellDef="let element"> {{element.universityName}} </td>
@@ -44,6 +43,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator class="students__paginator" [hidePageSize]="true" [pageSizeOptions]="[20]" showFirstLastButtons>
+    <mat-paginator class="page__table__paginator" [hidePageSize]="true" [pageSizeOptions]="[20]" showFirstLastButtons>
     </mat-paginator>
 </div>
