@@ -6,6 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { StudentsViewService } from './services/students-view.service';
 
 
 
@@ -20,6 +21,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     MatButtonModule,
     MatPaginatorModule
+  ],
+  providers: [
+    StudentsViewService
   ]
 })
 export class StudentsViewModule { }

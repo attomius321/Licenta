@@ -6,6 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginViewModule } from './features/login-view/login-view.module';
 import { BaseModule } from './features/base/base.module';
+import { HttpClientModule } from '@angular/common/http';
+import { authInterceptorProviders } from './interceptors/auth.interceptor';
+
+export function tokenGetter() {
+  return window.sessionStorage.getItem("auth-token");
+}
 
 @NgModule({
   declarations: [
@@ -16,9 +22,12 @@ import { BaseModule } from './features/base/base.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     LoginViewModule,
-    BaseModule
+    BaseModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    authInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

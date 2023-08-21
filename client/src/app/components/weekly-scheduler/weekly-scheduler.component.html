@@ -1,0 +1,35 @@
+<div class="weekly-scheduler">
+    <div class="weekly-scheduler__days">
+        <div class="spacer">
+
+        </div>
+        <div class="weekly-scheduler__days__day" *ngFor="let day of labelOfDays">
+            {{day}}
+        </div>
+    </div>
+    <div class="weekly-scheduler__hours" cdkDropListGroup>
+        <div class="weekly-scheduler__hours__section" *ngFor="let hour of hoursInterval">
+            <div class="hour">
+                {{hour}}
+            </div>
+            <div class="weekly-scheduler__hours__section__schedule" *ngFor="let day of labelOfDays; let i = index">
+                <div cdkDropList [cdkDropListData]="weeklySchedulerData" (cdkDropListDropped)="drop($event)"
+                    *ngFor="let data of weeklySchedulerData">
+                    <ng-container *ngIf="data.dayOfWeek === i + 1 && data.startsAt === hour">
+                        <div cdkDrag class="schedule-container" [style.background]="data.color">
+                            <div class="title">
+                                {{data.title}} - {{data.by}}
+                            </div>
+                            <div class="at">
+                                {{data.at | uppercase}}
+                            </div>
+                            <div class="metadata">
+                                {{data.metadata}}
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

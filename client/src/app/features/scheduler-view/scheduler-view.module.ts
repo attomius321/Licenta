@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SchedulerViewComponent } from './scheduler-view.component';
 import { SchedulerViewRoutingModule } from './scheduler-view-routing.module';
+import { WeeklySchedulerModule } from 'src/app/components/weekly-scheduler/weekly-scheduler.module';
 
 
 
@@ -11,7 +12,8 @@ import { SchedulerViewRoutingModule } from './scheduler-view-routing.module';
   ],
   imports: [
     CommonModule,
-    SchedulerViewRoutingModule
+    SchedulerViewRoutingModule,
+    WeeklySchedulerModule
   ]
 })
 export class SchedulerViewModule { }

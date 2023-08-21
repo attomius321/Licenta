@@ -2,6 +2,7 @@ package com.management.app.model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -16,20 +17,11 @@ public class CourseSchedule {
     private UUID id;
 
     private Integer dayOfWeek;
-    private Integer startsAt;
+    private Integer startsAtHour;
+    private Integer endsAtHour;
 
     public CourseSchedule() { }
 
-    public CourseSchedule(UUID id, Integer dayOfWeek, Integer hours) {
-        this.id = id;
-        this.dayOfWeek = dayOfWeek;
-        this.startsAt = hours;
-    }
-
-    public CourseSchedule(Integer dayOfWeek, Integer startsAt) {
-        this.dayOfWeek = dayOfWeek;
-        this.startsAt = startsAt;
-    }
     @ManyToMany(mappedBy = "courseSchedules", fetch = FetchType.LAZY)
     private Set<Student> students = new HashSet<>();
 
@@ -58,11 +50,19 @@ public class CourseSchedule {
     }
 
     public Integer getStartsAt() {
-        return startsAt;
+        return startsAtHour;
     }
 
-    public void setStartsAt(Integer hours) {
-        this.startsAt = hours;
+    public void setStartsAt(Integer startsAt) {
+        this.startsAtHour = startsAt;
+    }
+
+    public Integer getEndsAt() {
+        return endsAtHour;
+    }
+
+    public void setEndsAt(Integer endsAt) {
+        this.endsAtHour = endsAt;
     }
 
     public Set<Student> getStudents() {

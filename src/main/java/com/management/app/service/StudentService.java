@@ -25,9 +25,7 @@ public class StudentService {
         List<Student> students = studentRepository.findAll();
         List<StudentDTO> studentDTOs =
                 students.stream()
-                        .map(student -> {
-                            UserDTO userDTO = new UserDTO(student.getUser().getEmail());
-                            return new StudentDTO(student.getId(), student.getFirstName(), student.getLastName(), student.getYear(), student.getFaculty(), userDTO); })
+                        .map(student -> new StudentDTO(student.getId(), student.getFirstName(), student.getLastName(), student.getYear(), student.getUniversity().getName(), student.getUser().getEmail()))
                         .collect(Collectors.toList());
         return studentDTOs;
     }

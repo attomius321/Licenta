@@ -2,6 +2,7 @@ package com.management.app.security.entities;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 import com.management.app.model.Student;
 import com.management.app.model.Teacher;
@@ -23,8 +24,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "_user")
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
     @Column(unique = true)
     private String email;
     private String password;

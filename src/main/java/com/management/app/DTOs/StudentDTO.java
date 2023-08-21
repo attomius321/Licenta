@@ -7,25 +7,16 @@ public class StudentDTO {
     private String firstName;
     private String lastName;
     private Integer year;
-    private String faculty;
+    private String universityName;
+    private String email;
 
-    private UserDTO userDetails;
-
-    public StudentDTO(UUID id, String firstName, String lastName, Integer year, String faculty) {
+    public StudentDTO(UUID id, String firstName, String lastName, Integer year, String universityName, String email) {
         this.id = id.toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.year = year;
-        this.faculty = faculty;
-    }
-
-    public StudentDTO(UUID id, String firstName, String lastName, Integer year, String faculty, UserDTO userDTO) {
-        this.id = id.toString();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.year = year;
-        this.faculty = faculty;
-        this.userDetails = userDTO;
+        this.universityName = universityName;
+        this.email = email;
     }
 
     public String getId() {
@@ -60,19 +51,19 @@ public class StudentDTO {
         this.year = year;
     }
 
-    public String getFaculty() {
-        return faculty;
+    public String getUniversityName() {
+        return universityName;
     }
 
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;
+    public void setUniversityName(String universityName) {
+        this.universityName = universityName;
     }
 
-    public UserDTO getUserDetails() {
-        return userDetails;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserDetails(UserDTO userDetails) {
-        this.userDetails = userDetails;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

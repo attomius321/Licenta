@@ -36,9 +36,7 @@ public class Teacher {
     )
     private Set<Course> courses = new HashSet<>();
 
-    public Teacher() {
-
-    }
+    public Teacher() { }
 
     public UUID getId() {
         return id;

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseComponent } from './features/base/base.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
   {
     path: 'base',
     component: BaseComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -22,12 +24,6 @@ const routes: Routes = [
       }
     ]
   },
-  // {
-  //   path: 'teachers',
-  // },
-  // {
-  //   path: 'scheduler'
-  // }
 ];
 
 @NgModule({

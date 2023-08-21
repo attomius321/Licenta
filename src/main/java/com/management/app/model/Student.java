@@ -16,7 +16,6 @@ public class Student {
     private String firstName;
     private String lastName;
     private Integer year;
-    private String faculty;
 
     @OneToOne
     @JoinColumn(name = "user_id")
@@ -34,21 +33,6 @@ public class Student {
     private University university;
 
     public Student() { }
-
-    public Student(UUID id, String firstName, String lastName, Integer year, String faculty) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.year = year;
-        this.faculty = faculty;
-    }
-
-    public Student(String firstName, String lastName, Integer year, String faculty) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.year = year;
-        this.faculty = faculty;
-    }
 
     public UUID getId() {
         return id;
@@ -82,14 +66,6 @@ public class Student {
         this.year = year;
     }
 
-    public String getFaculty() {
-        return faculty;
-    }
-
-    public void setFaculty(String faculty) {
-        this.faculty = faculty;
-    }
-
     public Set<CourseSchedule> getCourseSchedules() {
         return new HashSet(courseSchedules);
     }
@@ -114,5 +90,13 @@ public class Student {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public University getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(University university) {
+        this.university = university;
     }
 }

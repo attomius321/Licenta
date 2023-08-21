@@ -3,6 +3,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { SNConfig } from './config/sidenav.config';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SidenavConfig, SidenavItem } from './types/base.types';
+import { HttpClient } from '@angular/common/http';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-base',
@@ -15,7 +17,8 @@ export class BaseComponent {
 
   public sidenav_config: SidenavConfig = SNConfig;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private tokenStorageService: TokenStorageService) {
+  }
 
   public openCloseSidenav(): void {
     this.opened ? this.sidenav.close() : this.sidenav.open();
@@ -23,10 +26,15 @@ export class BaseComponent {
   }
 
   public navigateTo(snItem: SidenavItem): void {
-    !snItem.isLogout ? this.router.navigate([snItem.route], { relativeTo: this.activatedRoute }) : this.router.navigate([snItem.route]);
+    !snItem.isLogout ? this.router.navigate([snItem.route], { relativeTo: this.activatedRoute }) : this.logout();
   }
 
   public isActive(route: string): boolean {
     return this.router.url.includes(route);
+  }
+
+  private logout() {
+    this.tokenStorageService.signOut();
+    this.router.navigate(['/login']);
   }
 }

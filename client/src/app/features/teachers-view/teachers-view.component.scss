@@ -1,0 +1,17 @@
+.teachers {
+    min-height: 100%;
+    padding: 0 10px;
+
+    &__actions {
+        &__button {
+            margin-right: 10px;
+        }
+    }
+
+    &__paginator {
+        border-top: 1px solid var(--efc-border);
+        position: sticky;
+        bottom: 0;
+    }
+
+}

@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, tap, throwError } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'login-view',
@@ -8,9 +12,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginViewComponent {
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  public signupForm: FormGroup = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]]
+  })
+
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   public login() {
-    this.router.navigate(['base/students'])
+    this.authService.login(this.signupForm.getRawValue()).pipe(
+      tap((data) => {
+        this.tokenStorage.saveToken(data.token);
+        this.router.navigate(['base/teachers']);
+      }),
+      catchError((err) => throwError(() => err))
+    ).subscribe();
   }
 }

@@ -5,20 +5,22 @@
                 <img class="login__card__title__image" src="./../../../assets/images/logo3.jpeg" />
             </div>
             <div class="login__card__content">
-                <form class="login__card__content__form">
+                <form *ngIf="signupForm" class="login__card__content__form" [formGroup]="signupForm">
                     <mat-form-field class="example-full-width">
                         <mat-label>Email</mat-label>
-                        <input matInput placeholder="Ex. Pizza" value="Sushi">
+                        <input matInput formControlName="email">
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width">
                         <mat-label>Parola</mat-label>
-                        <input matInput placeholder="Ex. Pizza" value="Sushi">
+                        <input matInput formControlName="password">
                     </mat-form-field>
+
+                    <div class="login__card__buttons">
+                        <button [disabled]="signupForm.invalid" class="login__card__buttons__button" mat-button
+                            (click)="login()">Login</button>
+                    </div>
                 </form>
-            </div>
-            <div class="login__card__buttons">
-                <button class="login__card__buttons__button" mat-button (click)="login()">Login</button>
             </div>
         </mat-card-content>
     </mat-card>

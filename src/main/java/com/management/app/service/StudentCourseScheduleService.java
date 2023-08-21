@@ -55,7 +55,7 @@ public class StudentCourseScheduleService {
         if (courseScheduleOptional.isPresent()) {
             CourseSchedule courseSchedule = courseScheduleOptional.get();
             Set<StudentDTO> studentDTOs = courseSchedule.getStudents().stream()
-                    .map(student -> new StudentDTO(student.getId(), student.getFirstName(), student.getLastName(), student.getYear(), student.getFaculty()))
+                    .map(student -> new StudentDTO(student.getId(), student.getFirstName(), student.getLastName(), student.getYear(), student.getUniversity().getName(), student.getUser().getEmail()))
                     .collect(Collectors.toSet());
             return new ResponseEntity<>(studentDTOs, HttpStatus.OK);
         } else {

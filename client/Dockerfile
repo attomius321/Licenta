@@ -4,5 +4,9 @@ COPY . .
 RUN npm install && \
     npm run build
 FROM nginx:alpine
-COPY --from=builder /app/dist/* /usr/share/nginx/html/
-COPY /nginx.conf /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf
+COPY /nginx.conf /etc/nginx/conf.d
+COPY --from=builder /app/dist/client /usr/share/nginx/html/
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+EXPOSE 80
