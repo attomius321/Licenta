@@ -1,6 +1,7 @@
 <div class="dialog">
     <div class="dialog__title">
-        Adauga baza sportiva
+        <ng-container *ngIf="data?.id; else noData"> Editeaza baza sportiva </ng-container>
+        <ng-template #noData> Adauga baza sportiva </ng-template>
     </div>
     <div class="dialog__content">
         <form [formGroup]="sportBaseForm">
@@ -11,12 +12,12 @@
 
             <mat-form-field>
                 <mat-label>Adresa</mat-label>
-                <input matInput formControlName="address">
+                <textarea matInput formControlName="address"></textarea>
             </mat-form-field>
 
             <div class="dialog__content__buttons">
-                <button type="button" mat-button (click)="close()">Anuleaza</button>
-                <button [disabled]="sportBaseForm.invalid" mat-button (click)="save()">Salveaza</button>
+                <button type="button" mat-button (click)="close()">ANULEAZA</button>
+                <button [disabled]="sportBaseForm.invalid" mat-button (click)="save()">SALVEAZA</button>
             </div>
         </form>
     </div>

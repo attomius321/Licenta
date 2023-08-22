@@ -6,6 +6,12 @@ import { StudentsViewService } from '../students-view/services/students-view.ser
 import { StudentDTO } from '../students-view/types/students-view.types';
 import { TeachersViewService } from './services/teachers-view.service';
 import { UniversityDTO } from '../universities-view/types/universities-view.types';
+import { TeacherDTO } from './types/teachers-view.types';
+import { SelectionModel } from '@angular/cdk/collections';
+import { TeacherAddComponent } from './panels/teacher-add/teacher-add.component';
+import { GenericPanelComponent } from 'src/app/components/panels/generic-panel/generic-panel.component';
+import { MatDialog } from '@angular/material/dialog';
+import { tap, catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-teachers-view',
@@ -13,20 +19,33 @@ import { UniversityDTO } from '../universities-view/types/universities-view.type
   styleUrls: ['./teachers-view.component.scss']
 })
 export class TeachersViewComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'universityName'];
+  displayedColumns: string[] = ['select', 'firstName', 'lastName', 'email', 'universityName', 'actions'];
   dataSource!: MatTableDataSource<any>;
+  selection = new SelectionModel<TeacherDTO>(true, []);
+
+  public isAllSelected() {
+    const numSelected = this.selection?.selected?.length;
+    const numRows = this.dataSource?.data?.length;
+    return numSelected === numRows;
+  }
+
+  public toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource.data);
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   decimalPipe = new DecimalPipe(navigator.language);
 
-  constructor(private teachersViewService: TeachersViewService) { }
+  constructor(private teachersViewService: TeachersViewService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.teachersViewService.getTeachers().subscribe(res => {
-      this.dataSource = new MatTableDataSource<any>(res);
-      this.dataSource.paginator = this.paginator;
-    });
+    this.refreshData();
   }
 
   ngAfterViewInit() {
@@ -44,5 +63,71 @@ export class TeachersViewComponent implements OnInit, AfterViewInit {
 
   public getUniversities(universities: UniversityDTO[]) {
     return universities.map((university: UniversityDTO) => university.name).join(', ');
+  }
+
+  public openAddDialog(): void {
+    const dialogRef = this.dialog.open(TeacherAddComponent, {
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.event == 'save') {
+        this.teachersViewService.createTeacher(result.data).pipe(
+          tap(() => this.refreshData()),
+          catchError(err => throwError(() => err))
+        ).subscribe();
+      }
+    });
+  }
+
+  openEditDialog(courseLocation: TeacherDTO): void {
+    const dialogRef = this.dialog.open(TeacherAddComponent, {
+      data: courseLocation
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.event == 'save') {
+        this.teachersViewService.updateTeacher(result.data).pipe(
+          tap(() => this.refreshData()),
+          catchError(err => throwError(() => err))
+        ).subscribe();
+      }
+    })
+  }
+
+  public openDeleteDialog(teacher?: TeacherDTO): void {
+    const dialogRef = this.dialog.open(GenericPanelComponent, {
+      data: {
+        title: 'Stergere Cadre Didactice',
+        content: [
+          'Urmeaza sa stergeti urmatoarele cadre didactice: ' + (() => teacher?.id ? teacher?.firstName + ' ' + teacher?.lastName : this.selection.selected.map((selection: TeacherDTO) => selection.firstName + ' ' + selection.lastName).join(', '))() + '.',
+          'Doriti sa continuati?'
+        ]
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.event == 'save') {
+        this.teachersViewService.deleteTeacher(teacher?.id ? [teacher?.id] : this.selection.selected.map((selection: TeacherDTO) => selection.id))
+          .pipe(
+            tap(() => this.refreshData()),
+            catchError(err => throwError(() => err))
+          )
+          .subscribe();
+      }
+    });
+
+  }
+
+  private refreshData(): void {
+    this.teachersViewService.getTeachers().subscribe((res: TeacherDTO[]) => {
+      this.dataSource = new MatTableDataSource<TeacherDTO>(res);
+      this.dataSource.paginator = this.paginator;
+      this.selection = new SelectionModel<TeacherDTO>(true, [])
+    });
+  }
+
+  public isDeleteDisabled() {
+    return this.selection.selected.length === 0;
   }
 }

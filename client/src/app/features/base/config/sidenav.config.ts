@@ -3,20 +3,20 @@ import { SidenavConfig } from "../types/base.types";
 export const SNConfig: SidenavConfig = {
     start: [
         {
-            title: 'Cadre didactice',
-            route: 'teachers',
-            icon: 'person'
-        },
-        {
-            title: 'Studenti',
-            route: 'students',
-            icon: 'school'
-        },
-        {
             title: 'Orar',
             route: 'scheduler',
             icon: 'calendar_month'
         },
+        {
+            title: 'Cadre didactice',
+            route: 'teachers',
+            icon: 'person'
+        },
+        // {
+        //     title: 'Studenti',
+        //     route: 'students',
+        //     icon: 'school'
+        // },
         {
             title: 'Baze sportive',
             route: 'sportbases',

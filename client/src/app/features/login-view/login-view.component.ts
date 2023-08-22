@@ -24,7 +24,7 @@ export class LoginViewComponent {
       tap((data) => {
         this.tokenStorage.saveToken(data.jwtAuthenticationResponse.token);
         this.tokenStorage.saveUser(data.user);
-        this.router.navigate(['base/teachers']);
+        this.router.navigate(['base/scheduler']);
       }),
       catchError((err) => throwError(() => err))
     ).subscribe();
