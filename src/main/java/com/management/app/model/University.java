@@ -2,6 +2,7 @@ package com.management.app.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,8 +19,8 @@ public class University {
 
     private String address;
 
-    @OneToMany(mappedBy = "university")
-    private Set<Teacher> teacherSet;
+    @ManyToMany(mappedBy = "universities", fetch = FetchType.LAZY)
+    private Set<Teacher> teachers = new HashSet<>();
 
     @OneToMany(mappedBy = "university")
     private Set<Student> studentSet;
@@ -48,12 +49,12 @@ public class University {
         this.address = address;
     }
 
-    public Set<Teacher> getTeacherSet() {
-        return teacherSet;
+    public Set<Teacher> getTeachers() {
+        return teachers;
     }
 
-    public void setTeacherSet(Set<Teacher> teacherSet) {
-        this.teacherSet = teacherSet;
+    public void setTeacherSet(Set<Teacher> teachers) {
+        this.teachers = teachers;
     }
 
     public Set<Student> getStudentSet() {

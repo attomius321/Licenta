@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { StudentsViewService } from '../students-view/services/students-view.service';
 import { StudentDTO } from '../students-view/types/students-view.types';
 import { TeachersViewService } from './services/teachers-view.service';
+import { UniversityDTO } from '../universities-view/types/universities-view.types';
 
 @Component({
   selector: 'app-teachers-view',
@@ -39,5 +40,9 @@ export class TeachersViewComponent implements OnInit, AfterViewInit {
       const end = (page + 1) * pageSize;
       return `${start} - ${end} din ${this.decimalPipe.transform(length)}`;
     };
+  }
+
+  public getUniversities(universities: UniversityDTO[]) {
+    return universities.map((university: UniversityDTO) => university.name).join(', ');
   }
 }

@@ -1,6 +1,7 @@
 package com.management.app.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -30,6 +31,7 @@ public class CourseSchedule {
     private Course course;
 
     @ManyToOne
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name="course_location_id")
     private CourseLocation courseLocation;
 

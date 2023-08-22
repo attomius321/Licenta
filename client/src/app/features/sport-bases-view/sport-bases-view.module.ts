@@ -7,12 +7,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SportBaseAddComponent } from './panels/sport-base-add/sport-base-add.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { GenericPanelModule } from 'src/app/components/panels/generic-panel/generic-panel.module';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
 @NgModule({
   declarations: [
-    SportBasesViewComponent
+    SportBasesViewComponent,
+    SportBaseAddComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +29,15 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatIconModule,
     MatButtonModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    GenericPanelModule,
+    MatMenuModule
   ],
   providers: [
     SportBasesViewService

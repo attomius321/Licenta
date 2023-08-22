@@ -2,6 +2,7 @@ package com.management.app.service;
 
 import com.management.app.DTOs.StudentDTO;
 import com.management.app.DTOs.TeacherDTO;
+import com.management.app.DTOs.UniversityDTO;
 import com.management.app.DTOs.UserDTO;
 import com.management.app.model.Student;
 import com.management.app.model.Teacher;
@@ -27,7 +28,9 @@ public class TeacherService {
         List<Teacher> teachers = teacherRepository.findAll();
         List<TeacherDTO> teacherDTOs =
                 teachers.stream()
-                        .map(teacher -> new TeacherDTO(teacher.getId(), teacher.getFirstName(), teacher.getLastName(), teacher.getUniversity().getName(), teacher.getUser().getEmail()))
+                        .map(teacher -> new TeacherDTO(teacher.getId(), teacher.getFirstName(), teacher.getLastName(),
+                                teacher.getUniversities().stream().map(university -> new UniversityDTO(university.getId().toString(), university.getName(), university.getAddress())).collect(Collectors.toSet()),
+                                teacher.getUser().getEmail()))
                         .collect(Collectors.toList());
         return teacherDTOs;
     }

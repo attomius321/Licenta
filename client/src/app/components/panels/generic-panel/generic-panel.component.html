@@ -1,0 +1,14 @@
+<div class="dialog generic-dialog">
+    <div class="dialog__title">
+        {{data.title}}
+    </div>
+    <div class="dialog__content">
+        <div *ngFor="let content of data.content">
+            {{content}}
+        </div>
+        <div class="dialog__content__buttons">
+            <button type="button" mat-button (click)="close()">Anuleaza</button>
+            <button type="button" mat-button (click)="save()">Continua</button>
+        </div>
+    </div>
+</div>

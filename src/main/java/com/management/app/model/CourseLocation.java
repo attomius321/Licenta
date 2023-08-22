@@ -19,8 +19,8 @@ public class CourseLocation {
 
     private String address;
 
-    @OneToMany(mappedBy="courseLocation")
-    private Set<CourseSchedule> courseSchedules;
+    @OneToMany(mappedBy="courseLocation", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Set<CourseSchedule> courseSchedules = new HashSet<>();
 
     public UUID getId() {
         return id;

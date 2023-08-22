@@ -118,12 +118,15 @@ public class PopulateDBConfig {
             Teacher teacher1 = new Teacher();
             teacher1.setFirstName("Teacher");
             teacher1.setLastName("1");
-            teacher1.setUniversity(university1);
+            teacher1.addUniversity(university1);
+            teacher1.addUniversity(university2);
+
 
             Teacher teacher2 = new Teacher();
             teacher2.setFirstName("Teacher");
             teacher2.setLastName("2");
-            teacher2.setUniversity(university2);
+            teacher2.addUniversity(university3);
+            teacher2.addUniversity(university4);
 
             teacher1.setUser(user_teacher1);
             teacher2.setUser(user_teacher2);
@@ -156,6 +159,7 @@ public class PopulateDBConfig {
             cs2.setCourseLocation(cl2);
 
             courseScheduleRepository.saveAll(List.of(cs1, cs2));
+
         };
     }
 }

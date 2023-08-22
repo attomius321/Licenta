@@ -21,9 +21,12 @@ public class Teacher {
     @Getter
     private String lastName;
 
-    @ManyToOne
-    @JoinColumn(name = "university_id")
-    private University university;
+    @ManyToMany
+    @JoinTable(name = "teacher_universities",
+            joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = @JoinColumn(name = "university_id")
+    )
+    private Set<University> universities = new HashSet<>();
 
     @OneToOne
     @JoinColumn(name = "user_id")
@@ -54,20 +57,30 @@ public class Teacher {
         this.lastName = lastName;
     }
 
-    public University getUniversity() {
-        return university;
-    }
-
-    public void setUniversity(University university) {
-        this.university = university;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<University> getUniversities() {
+        return new HashSet(universities);
+    }
+
+    public void addUniversity(University university) {
+        if (universities.contains(university))
+            return;
+
+        universities.add(university);
+    }
+
+    public void removeUniversity(University university) {
+        if (!universities.contains(university))
+            return;
+
+        universities.remove(university);
     }
 
     public Set<Course> getCourses() {

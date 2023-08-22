@@ -1,19 +1,20 @@
 package com.management.app.DTOs;
 
+import java.util.Set;
 import java.util.UUID;
 
 public class TeacherDTO {
     private String id;
     private String firstName;
     private String lastName;
-    private String universityName;
+    private Set<UniversityDTO> universities;
     private String email;
 
-    public TeacherDTO(UUID id, String firstName, String lastName, String universityName, String email) {
+    public TeacherDTO(UUID id, String firstName, String lastName, Set<UniversityDTO> universities, String email) {
         this.id = id.toString();
         this.firstName = firstName;
         this.lastName = lastName;
-        this.universityName = universityName;
+        this.universities = universities;
         this.email = email;
     }
 
@@ -41,12 +42,12 @@ public class TeacherDTO {
         this.lastName = lastName;
     }
 
-    public String getUniversityName() {
-        return universityName;
+    public Set<UniversityDTO> getUniversities() {
+        return universities;
     }
 
-    public void setUniversityName(String universityName) {
-        this.universityName = universityName;
+    public void setUniversities(Set<UniversityDTO> universities) {
+        this.universities = universities;
     }
 
     public String getEmail() {

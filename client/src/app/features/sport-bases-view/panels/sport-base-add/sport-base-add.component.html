@@ -1,0 +1,23 @@
+<div class="dialog">
+    <div class="dialog__title">
+        Adauga baza sportiva
+    </div>
+    <div class="dialog__content">
+        <form [formGroup]="sportBaseForm">
+            <mat-form-field>
+                <mat-label>Nume</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Adresa</mat-label>
+                <input matInput formControlName="address">
+            </mat-form-field>
+
+            <div class="dialog__content__buttons">
+                <button type="button" mat-button (click)="close()">Anuleaza</button>
+                <button [disabled]="sportBaseForm.invalid" mat-button (click)="save()">Salveaza</button>
+            </div>
+        </form>
+    </div>
+</div>

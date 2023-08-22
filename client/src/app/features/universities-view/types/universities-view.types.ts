@@ -1,4 +1,5 @@
 export type UniversityDTO = {
     id: string;
-    namme: string;
+    name: string;
+    address: string;
 }

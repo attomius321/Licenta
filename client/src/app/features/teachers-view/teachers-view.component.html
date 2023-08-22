@@ -32,8 +32,8 @@
             </ng-container>
 
             <ng-container matColumnDef="universityName">
-                <th mat-header-cell *matHeaderCellDef> Facultate </th>
-                <td mat-cell *matCellDef="let element"> {{element.universityName}} </td>
+                <th mat-header-cell *matHeaderCellDef> Facultati </th>
+                <td mat-cell *matCellDef="let element"> {{getUniversities(element.universities)}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>

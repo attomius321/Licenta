@@ -13,4 +13,16 @@ export class SportBasesViewService {
     public getCourseLocations(): Observable<CourseLocationDTO[]> {
         return <Observable<CourseLocationDTO[]>>this.http.get(BASES_API);
     }
+
+    public createCourseLocation(courseLocationDTO: Partial<CourseLocationDTO>): Observable<CourseLocationDTO> {
+        return <Observable<CourseLocationDTO>>this.http.post(BASES_API, courseLocationDTO);
+    }
+
+    public updateCourseLocation(courseLocationDTO: CourseLocationDTO): Observable<CourseLocationDTO> {
+        return <Observable<CourseLocationDTO>>this.http.put(BASES_API, courseLocationDTO);
+    }
+
+    public deleteCourseLocation(ids: string[]): Observable<any> {
+        return this.http.delete(BASES_API, { body: ids });
+    }
 }

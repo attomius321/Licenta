@@ -6,12 +6,12 @@
             </div>
             <div class="login__card__content">
                 <form *ngIf="signupForm" class="login__card__content__form" [formGroup]="signupForm">
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field>
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email">
                     </mat-form-field>
 
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field>
                         <mat-label>Parola</mat-label>
                         <input matInput type="password" formControlName="password">
                     </mat-form-field>
