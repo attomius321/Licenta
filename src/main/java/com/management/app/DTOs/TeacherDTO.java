@@ -10,8 +10,8 @@ public class TeacherDTO {
     private Set<UniversityDTO> universities;
     private String email;
 
-    public TeacherDTO(UUID id, String firstName, String lastName, Set<UniversityDTO> universities, String email) {
-        this.id = id.toString();
+    public TeacherDTO(String id, String firstName, String lastName, Set<UniversityDTO> universities, String email) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.universities = universities;

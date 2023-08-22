@@ -113,7 +113,11 @@ body {
         }
 
         tr {
-            height: 30px;
+            height: 41px;
+
+            .cdk-column-select {
+                width: 20px;
+            }
         }
 
         &__paginator {
@@ -124,6 +128,10 @@ body {
 
         &__row-icon {
             cursor: pointer;
+        }
+
+        .mat-mdc-cell {
+            max-width: 250px;
         }
     }
 }

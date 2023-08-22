@@ -83,6 +83,10 @@ public class Teacher {
         universities.remove(university);
     }
 
+    public void removeAllUniversities() {
+        universities = new HashSet<>();
+    }
+
     public Set<Course> getCourses() {
         return new HashSet(courses);
     }

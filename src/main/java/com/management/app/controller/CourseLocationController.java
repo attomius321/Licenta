@@ -41,7 +41,6 @@ public class CourseLocationController {
 
     @DeleteMapping
     public void deleteCourseLocationsByIds(@RequestBody List<String> ids) {
-        System.out.println(ids);
         courseLocationService.deleteCourseLocationsById(ids.stream().map(id -> UUID.fromString(id)).collect(Collectors.toSet()));
     }
 

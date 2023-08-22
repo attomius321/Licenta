@@ -21,7 +21,7 @@ public class UniversityController {
     }
 
     @GetMapping
-    public List<UniversityDTO> getCourseLocations() {
+    public List<UniversityDTO> getUniversities() {
         return universityService.getUniversities();
     }
 
