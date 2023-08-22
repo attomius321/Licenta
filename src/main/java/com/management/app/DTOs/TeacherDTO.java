@@ -8,13 +8,15 @@ public class TeacherDTO {
     private String firstName;
     private String lastName;
     private Set<UniversityDTO> universities;
+    private Set<CourseDTO> courses;
     private String email;
 
-    public TeacherDTO(String id, String firstName, String lastName, Set<UniversityDTO> universities, String email) {
+    public TeacherDTO(String id, String firstName, String lastName, Set<UniversityDTO> universities, Set<CourseDTO> courses,  String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.universities = universities;
+        this.courses = courses;
         this.email = email;
     }
 
@@ -48,6 +50,14 @@ public class TeacherDTO {
 
     public void setUniversities(Set<UniversityDTO> universities) {
         this.universities = universities;
+    }
+
+    public Set<CourseDTO> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<CourseDTO> courses) {
+        this.courses = courses;
     }
 
     public String getEmail() {

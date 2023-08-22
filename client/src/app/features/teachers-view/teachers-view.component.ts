@@ -6,7 +6,7 @@ import { StudentsViewService } from '../students-view/services/students-view.ser
 import { StudentDTO } from '../students-view/types/students-view.types';
 import { TeachersViewService } from './services/teachers-view.service';
 import { UniversityDTO } from '../universities-view/types/universities-view.types';
-import { TeacherDTO } from './types/teachers-view.types';
+import { CourseDTO, TeacherDTO } from './types/teachers-view.types';
 import { SelectionModel } from '@angular/cdk/collections';
 import { TeacherAddComponent } from './panels/teacher-add/teacher-add.component';
 import { GenericPanelComponent } from 'src/app/components/panels/generic-panel/generic-panel.component';
@@ -19,7 +19,7 @@ import { tap, catchError, throwError } from 'rxjs';
   styleUrls: ['./teachers-view.component.scss']
 })
 export class TeachersViewComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['select', 'firstName', 'lastName', 'email', 'universityName', 'actions'];
+  displayedColumns: string[] = ['select', 'email', 'firstName', 'lastName', 'universityName', 'courses', 'actions'];
   dataSource!: MatTableDataSource<any>;
   selection = new SelectionModel<TeacherDTO>(true, []);
 

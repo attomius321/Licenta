@@ -4,6 +4,7 @@ import com.management.app.DTOs.*;
 import com.management.app.model.CourseLocation;
 import com.management.app.model.Student;
 import com.management.app.model.Teacher;
+import com.management.app.repository.CourseRepository;
 import com.management.app.repository.StudentRepository;
 import com.management.app.repository.TeacherRepository;
 import com.management.app.repository.UniversityRepository;
@@ -25,17 +26,22 @@ public class TeacherService {
 
     private final TeacherRepository teacherRepository;
     private final UserRepository userRepository;
-
     private final UniversityRepository universityRepository;
-
+    private final CourseRepository courseRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public TeacherService(TeacherRepository teacherRepository, UserRepository userRepository, UniversityRepository universityRepository,
-        PasswordEncoder passwordEncoder) {
+    public TeacherService(
+            TeacherRepository teacherRepository,
+            UserRepository userRepository,
+            UniversityRepository universityRepository,
+            CourseRepository courseRepository,
+            PasswordEncoder passwordEncoder
+    ) {
         this.teacherRepository = teacherRepository;
         this.userRepository = userRepository;
         this.universityRepository = universityRepository;
+        this.courseRepository = courseRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -45,6 +51,7 @@ public class TeacherService {
                 teachers.stream()
                         .map(teacher -> new TeacherDTO(teacher.getId().toString(), teacher.getFirstName(), teacher.getLastName(),
                                 teacher.getUniversities().stream().map(university -> new UniversityDTO(university.getId().toString(), university.getName(), university.getAddress())).collect(Collectors.toSet()),
+                                teacher.getCourses().stream().map(course -> new CourseDTO(course.getId().toString(), course.getName(), course.getScheduleColor())).collect(Collectors.toSet()),
                                 teacher.getUser().getEmail()))
                         .collect(Collectors.toList());
         return teacherDTOs;
@@ -67,6 +74,8 @@ public class TeacherService {
         teacher.setLastName(teacherDTO.getLastName());
         teacher.removeAllUniversities();
         teacherDTO.getUniversities().stream().forEach(universityDTO -> teacher.addUniversity(universityRepository.findById(UUID.fromString(universityDTO.getId())).get()));
+        teacher.removeAllCourses();
+        teacherDTO.getCourses().stream().forEach(courseDTO -> teacher.addCourse(courseRepository.findById(UUID.fromString(courseDTO.getId())).get()));
         return teacherRepository.save(teacher);
     }
 
@@ -82,6 +91,7 @@ public class TeacherService {
         teacher.setFirstName(teacherDTO.getFirstName());
         teacher.setLastName(teacherDTO.getLastName());
         teacherDTO.getUniversities().stream().forEach(universityDTO -> teacher.addUniversity(universityRepository.findById(UUID.fromString(universityDTO.getId())).get()));
+        teacherDTO.getCourses().stream().forEach(courseDTO -> teacher.addCourse(courseRepository.findById(UUID.fromString(courseDTO.getId())).get()));
         return teacher;
     }
 }

@@ -105,4 +105,8 @@ public class Teacher {
         courses.remove(course);
     }
 
+    public void removeAllCourses() {
+        courses = new HashSet<>();
+    }
+
 }

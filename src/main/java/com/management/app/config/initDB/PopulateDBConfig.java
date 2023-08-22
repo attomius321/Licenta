@@ -115,6 +115,34 @@ public class PopulateDBConfig {
 
             studentRepository.saveAll(List.of(student1, student2));
 
+            Course course1 = new Course();
+            course1.setName("Footbal");
+            course1.setScheduleColor("#003F88");
+
+            Course course2 = new Course();
+            course2.setName("Fitness");
+            course2.setScheduleColor("#77166A");
+
+            Course course3 = new Course();
+            course3.setName("Culturism");
+            course3.setScheduleColor("#BF3563");
+
+            Course course4 = new Course();
+            course4.setName("Inot");
+            course4.setScheduleColor("#EE6F54");
+
+            Course course5 = new Course();
+            course5.setName("Baschet");
+            course5.setScheduleColor("#FFB250");
+
+            Course course6 = new Course();
+            course6.setName("Jogging");
+            course6.setScheduleColor("#F9F871");
+
+            Course course7 = new Course();
+            course7.setName("Gimnastica aerobica");
+            course7.setScheduleColor("#8E1F23");
+
             Teacher teacher1 = new Teacher();
             teacher1.setFirstName("Teacher");
             teacher1.setLastName("1");
@@ -130,16 +158,12 @@ public class PopulateDBConfig {
 
             teacher1.setUser(user_teacher1);
             teacher2.setUser(user_teacher2);
+            teacher1.addCourse(course1);
+            teacher2.addCourse(course2);
 
             teacherRepository.saveAll(List.of(teacher1, teacher2));
+            courseRepository.saveAll(List.of(course1, course2, course3, course4, course5, course6, course7));
 
-            Course course1 = new Course();
-            course1.setName("Football");
-
-            Course course2 = new Course();
-            course2.setName("Gym");
-
-            courseRepository.saveAll(List.of(course1, course2));
 
             CourseLocation cl1 = new CourseLocation();
             cl1.setName("Baza 1");

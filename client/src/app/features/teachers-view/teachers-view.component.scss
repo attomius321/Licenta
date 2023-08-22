@@ -1,0 +1,23 @@
+.table__courses {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__course {
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        margin-right: 10px;
+
+        &__color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        span:not(:last-child) {
+            content: ', '
+        }
+    }
+
+}

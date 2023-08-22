@@ -37,7 +37,7 @@ export class BaseComponent implements AfterViewInit {
   }
 
   public getUserEmail() {
-
+    return this.tokenStorageService.getUser().email;
   }
 
   private logout() {

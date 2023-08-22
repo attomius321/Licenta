@@ -1,12 +1,9 @@
 package com.management.app.controller;
 
-import com.management.app.DTOs.CourseLocationDTO;
-import com.management.app.DTOs.StudentDTO;
+import com.management.app.DTOs.CourseDTO;
 import com.management.app.DTOs.TeacherDTO;
 import com.management.app.DTOs.UniversityDTO;
-import com.management.app.model.CourseLocation;
 import com.management.app.model.Teacher;
-import com.management.app.service.StudentService;
 import com.management.app.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +34,7 @@ public class TeacherController {
         Teacher teacher = teacherService.createTeacher(teacherDTO);
         return new TeacherDTO(teacher.getId().toString(), teacher.getFirstName(), teacher.getLastName(),
                 teacher.getUniversities().stream().map(university -> new UniversityDTO(university.getId().toString(), university.getName(), university.getAddress())).collect(Collectors.toSet()),
+                teacher.getCourses().stream().map(course -> new CourseDTO(course.getId().toString(), course.getName(), course.getScheduleColor())).collect(Collectors.toSet()),
                 teacher.getUser().getEmail());
     }
 
@@ -45,6 +43,7 @@ public class TeacherController {
         Teacher teacher = teacherService.updateTeacher(teacherDTO);
         return new TeacherDTO(teacher.getId().toString(), teacher.getFirstName(), teacher.getLastName(),
                 teacher.getUniversities().stream().map(university -> new UniversityDTO(university.getId().toString(), university.getName(), university.getAddress())).collect(Collectors.toSet()),
+                teacher.getCourses().stream().map(course -> new CourseDTO(course.getId().toString(), course.getName(), course.getScheduleColor())).collect(Collectors.toSet()),
                 teacher.getUser().getEmail());
     }
 

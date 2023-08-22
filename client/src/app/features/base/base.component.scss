@@ -11,6 +11,10 @@
         background-color: var(--efc-primary-color);
         border-bottom: 1px solid var(--efc-border);
 
+        &__email {
+            margin-right: 20px;
+        }
+
         &__logo {
             height: 50px;
         }

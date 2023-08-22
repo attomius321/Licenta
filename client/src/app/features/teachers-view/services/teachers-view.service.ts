@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TeacherDTO } from '../types/teachers-view.types';
+import { CourseDTO, TeacherDTO } from '../types/teachers-view.types';
 import { UniversityDTO } from '../../universities-view/types/universities-view.types';
 
 const TEACHER_API = 'http://localhost:8080/api/v1/teacher';
 const UNIVERSITY_API = 'http://localhost:8080/api/v1/university';
+const COURSE_API = 'http://localhost:8080/api/v1/course';
 
 @Injectable()
 export class TeachersViewService {
@@ -30,5 +31,9 @@ export class TeachersViewService {
 
     public getUniversities(): Observable<UniversityDTO[]> {
         return <Observable<UniversityDTO[]>>this.http.get(UNIVERSITY_API);
+    }
+
+    public getCourses(): Observable<CourseDTO[]> {
+        return <Observable<CourseDTO[]>>this.http.get(COURSE_API);
     }
 }

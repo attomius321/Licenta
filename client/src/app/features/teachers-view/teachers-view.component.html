@@ -51,6 +51,21 @@
                 <td mat-cell *matCellDef="let element"> {{getUniversities(element.universities)}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="courses">
+                <th mat-header-cell *matHeaderCellDef> Cursuri </th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="table__courses">
+                        <ng-container *ngFor="let course of element.courses">
+                            <div class="table__courses__course">
+                                <div class="table__courses__course__color" [style.background]="course.scheduleColor">
+                                </div>
+                                {{course.name}} <span></span>
+                            </div>
+                        </ng-container>
+                    </div>
+                </td>
+            </ng-container>
+
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
                 <td mat-cell *matCellDef="let element">

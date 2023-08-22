@@ -1,6 +1,7 @@
 package com.management.app.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.*;
 
@@ -14,6 +15,9 @@ public class Course {
     private UUID id;
 
     private String name;
+
+    @Getter
+    private String scheduleColor;
 
     @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
     private Set<Teacher> teachers = new HashSet<>();
@@ -35,6 +39,12 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getScheduleColor() { return scheduleColor; }
+
+    public void setScheduleColor(String scheduleColor) {
+        this.scheduleColor = scheduleColor;
     }
 
     public Set<Teacher> getTeachers() {
@@ -68,5 +78,7 @@ public class Course {
             return;
         courseSchedules.remove(courseSchedule);
     }
+
+
 
 }

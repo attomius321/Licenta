@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TeachersViewService } from '../../services/teachers-view.service';
 import { UniversityDTO } from 'src/app/features/universities-view/types/universities-view.types';
 import { Observable } from 'rxjs';
+import { CourseDTO } from '../../types/teachers-view.types';
 
 @Component({
   selector: 'app-teacher-add',
@@ -13,6 +14,7 @@ import { Observable } from 'rxjs';
 export class TeacherAddComponent {
   public teacherForm!: FormGroup;
   universities!: Observable<UniversityDTO[]>;
+  courses!: Observable<CourseDTO[]>;
 
   constructor(private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<TeacherAddComponent>,
@@ -24,10 +26,12 @@ export class TeacherAddComponent {
       firstName: [this.data?.firstName ? this.data?.firstName : ''],
       lastName: [this.data?.lastName ? this.data?.lastName : '', [Validators.required]],
       email: [{ value: this.data?.email ? this.data?.email : '', disabled: this.data?.id }, [Validators.required, Validators.email]],
-      universities: [this.data?.universities ? this.data?.universities : '', [Validators.required]]
+      universities: [this.data?.universities ? this.data?.universities : '', [Validators.required]],
+      courses: [this.data?.courses ? this.data?.courses : '', [Validators.required]]
     })
 
     this.universities = this.teacherService.getUniversities();
+    this.courses = this.teacherService.getCourses();
   }
 
   public compareWithFn(item1: any, item2: any): boolean {
