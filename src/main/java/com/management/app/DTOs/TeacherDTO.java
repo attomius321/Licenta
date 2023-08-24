@@ -1,7 +1,10 @@
 package com.management.app.DTOs;
 
+import com.management.app.model.Teacher;
+
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class TeacherDTO {
     private String id;
@@ -18,6 +21,15 @@ public class TeacherDTO {
         this.universities = universities;
         this.courses = courses;
         this.email = email;
+    }
+
+    public TeacherDTO(Teacher teacher) {
+        this.id = teacher.getId().toString();
+        this.firstName = teacher.getFirstName();
+        this.lastName = teacher.getLastName();
+        this.universities = teacher.getUniversities().stream().map(university -> new UniversityDTO(university)).collect(Collectors.toSet());
+        this.courses = teacher.getCourses().stream().map(course -> new CourseDTO(course)).collect(Collectors.toSet());
+        this.email = teacher.getUser().getEmail();
     }
 
     public String getId() {

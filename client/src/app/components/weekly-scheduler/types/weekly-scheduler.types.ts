@@ -9,8 +9,9 @@ export type WeeklySchedulerData = {
     startsAt: string;
     title: string;
     by: string;
-    metadata?: string;
     metadataLabel?: string;
+    enrolled: number;
+    maxAllocation: number;
     at: string;
     color: string;
 }

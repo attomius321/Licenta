@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/v1/courseSchedule/students")
+@RequestMapping("/api/v1/courseSchedule/student")
 public class StudentCourseScheduleController {
 
     private StudentCourseScheduleService studentCourseScheduleService;

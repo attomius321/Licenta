@@ -57,6 +57,15 @@ public class TeacherService {
         return teacherDTOs;
     }
 
+    public List<TeacherDTO> getTeachersByCourse(UUID id) {
+        return teacherRepository.findByCourses_Id(id).stream()
+                .map(teacher -> new TeacherDTO(teacher.getId().toString(), teacher.getFirstName(), teacher.getLastName(),
+                        teacher.getUniversities().stream().map(university -> new UniversityDTO(university.getId().toString(), university.getName(), university.getAddress())).collect(Collectors.toSet()),
+                        teacher.getCourses().stream().map(course -> new CourseDTO(course.getId().toString(), course.getName(), course.getScheduleColor())).collect(Collectors.toSet()),
+                        teacher.getUser().getEmail()))
+                .collect(Collectors.toList());
+    }
+
     public Teacher createTeacher(TeacherDTO teacherDTO) throws ParseException {
         Teacher teacher = createNewEntity(teacherDTO);
         User user = new User();
@@ -82,7 +91,7 @@ public class TeacherService {
     public void deleteTeachersByIds(Set<UUID> uuids) {
         Set<Teacher> teachers = uuids.stream().map(uuid -> teacherRepository.findById(uuid).get()).collect(Collectors.toSet());
         Set<User> users = teachers.stream().map(teacher -> teacher.getUser()).collect(Collectors.toSet());
-        teachers.forEach(courseLocation -> teacherRepository.delete(courseLocation));
+        teachers.forEach(teacher -> teacherRepository.delete(teacher));
         users.forEach(user -> userRepository.delete(user));
     }
 

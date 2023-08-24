@@ -1,5 +1,7 @@
 package com.management.app.DTOs;
 
+import com.management.app.model.University;
+
 public class UniversityDTO {
 
     private String id;
@@ -12,6 +14,12 @@ public class UniversityDTO {
         this.id = id;
         this.name = name;
         this.address = address;
+    }
+
+    public UniversityDTO(University university) {
+        this.id = university.getId().toString();
+        this.name = university.getName();
+        this.address = university.getAddress();
     }
 
     public String getId() {

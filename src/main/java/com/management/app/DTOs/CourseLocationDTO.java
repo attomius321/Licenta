@@ -1,5 +1,7 @@
 package com.management.app.DTOs;
 
+import com.management.app.model.CourseLocation;
+
 import java.util.UUID;
 
 public class CourseLocationDTO {
@@ -14,6 +16,12 @@ public class CourseLocationDTO {
         this.id = id;
         this.name = name;
         this.address = address;
+    }
+
+    public CourseLocationDTO(CourseLocation courseLocation) {
+        this.id = courseLocation.getId().toString();
+        this.name = courseLocation.getName();
+        this.address = courseLocation.getAddress();
     }
 
     public String getId() {

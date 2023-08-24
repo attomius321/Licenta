@@ -39,6 +39,9 @@ public class Teacher {
     )
     private Set<Course> courses = new HashSet<>();
 
+    @OneToMany(mappedBy="teacher")
+    private Set<CourseSchedule> courseSchedules;
+
     public Teacher() { }
 
     public UUID getId() {
@@ -107,6 +110,20 @@ public class Teacher {
 
     public void removeAllCourses() {
         courses = new HashSet<>();
+    }
+
+    public Set<CourseSchedule> getCourseSchedules() { return this.courseSchedules; }
+
+    public void addCourseSchedule(CourseSchedule courseSchedule) {
+        if (courseSchedules.contains(courseSchedule))
+            return;
+        courseSchedules.add(courseSchedule);
+    }
+
+    public void removeCourseSchedule(CourseSchedule courseSchedule) {
+        if (!courseSchedules.contains(courseSchedule))
+            return;
+        courseSchedules.remove(courseSchedule);
     }
 
 }

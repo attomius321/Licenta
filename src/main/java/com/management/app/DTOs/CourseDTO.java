@@ -1,5 +1,7 @@
 package com.management.app.DTOs;
 
+import com.management.app.model.Course;
+
 public class CourseDTO {
 
     private String id;
@@ -12,6 +14,12 @@ public class CourseDTO {
         this.id = id;
         this.name = name;
         this.scheduleColor = scheduleColor;
+    }
+
+    public CourseDTO(Course course) {
+        this.id = course.getId().toString();
+        this.name = course.getName();
+        this.scheduleColor = course.getScheduleColor();
     }
 
     public String getId() {

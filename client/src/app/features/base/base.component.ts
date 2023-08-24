@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { SNConfig } from './config/sidenav.config';
+import { getCurrentSNConfig } from './config/sidenav.config';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SidenavConfig, SidenavItem } from './types/base.types';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +15,7 @@ export class BaseComponent implements AfterViewInit {
   @ViewChild('sidenav') sidenav!: MatSidenav;
   public opened: boolean = true;
 
-  public sidenav_config: SidenavConfig = SNConfig;
+  public sidenav_config: SidenavConfig = getCurrentSNConfig(this.tokenStorageService.getUser().role);
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private tokenStorageService: TokenStorageService) {
   }

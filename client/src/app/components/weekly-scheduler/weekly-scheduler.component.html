@@ -17,11 +17,9 @@
                 *ngFor="let day of labelOfDays; let i = index">
                 <div *ngFor="let data of weeklySchedulerData">
                     <ng-container *ngIf="data.dayOfWeek === i + 1 && data.startsAt === hour">
-                        <mat-card cdkDrag (cdkDragStarted)="onDragStart(data)" class="schedule-container"
-                            [style.border]="'2px solid ' + data.color">
-                            <div class="color-container" [style.background]="data.color">
-
-                            </div>
+                        <mat-card cdkDrag [cdkDragDisabled]="true" (cdkDragStarted)="onDragStart(data)"
+                            class="schedule-container" [style.border]="'2px solid ' + data.color">
+                            <div class="color-container" [style.background]="data.color"></div>
                             <div class="details">
                                 <div class="title">
                                     {{data.title | uppercase}} - {{data.by | uppercase}}
@@ -30,8 +28,20 @@
                                     {{data.at | uppercase}}
                                 </div>
                                 <div class="metadata">
-                                    {{data.metadataLabel}}: {{data.metadata}}
+                                    {{data.metadataLabel}}: {{data.enrolled}}/{{data.maxAllocation}}
                                 </div>
+                            </div>
+                            <div class="icons">
+                                <button *ngIf="allowEdit" mat-button (click)="onEditClicked(data.id)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                                <button *ngIf="allowDelete" mat-button (click)="onDeleteClicked(data.id)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <button *ngIf="allowEnroll && maxAllocationPermit(data.enrolled, data.maxAllocation)"
+                                    mat-button (click)="onEnrollClicked(data.id)">
+                                    <mat-icon>subscriptions</mat-icon>
+                                </button>
                             </div>
                         </mat-card>
                     </ng-container>

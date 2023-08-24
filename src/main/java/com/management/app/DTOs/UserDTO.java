@@ -5,11 +5,12 @@ public class UserDTO {
 
     private String email;
     private String  role;
+    private String entityId;
 
-
-    public UserDTO(String email, String role) {
+    public UserDTO(String email, String role, String entityId) {
         this.email = email;
         this.role = role;
+        this.entityId = entityId;
     }
 
     public String getEmail() {
@@ -26,5 +27,13 @@ public class UserDTO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getEntityId() {
+        return entityId;
+    }
+
+    public void setEntityId(String entityId) {
+        this.entityId = entityId;
     }
 }

@@ -1,5 +1,6 @@
 package com.management.app.model;
 
+import com.management.app.DTOs.CourseDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 

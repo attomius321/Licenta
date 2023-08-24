@@ -3,7 +3,7 @@
 
     <div class="page__top">
         Baze sportive
-        <div class="page__top__actions">
+        <div class="page__top__actions" *ngIf="isUserAdmin()">
             <button mat-button class="page__top__actions__button" (click)="openAddDialog()">
                 <mat-icon>add</mat-icon>
                 ADAUGA

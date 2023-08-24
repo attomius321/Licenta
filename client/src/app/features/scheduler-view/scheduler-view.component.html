@@ -1,6 +1,19 @@
-<div class="page">
+<div class="page" *ngIf="schedulerData">
     <div class="page__top">
         Orar
+        <div class="page__top__actions">
+            <button *ngIf="allowActions()" mat-button class="page__top__actions__button" (click)="openAddDialog()">
+                <mat-icon>add</mat-icon>
+                ADAUGA
+            </button>
+            <!-- <button mat-button class="page__top__actions__button" (click)="openDeleteDialog()">
+                <mat-icon>delete</mat-icon>
+                STERGE
+            </button> -->
+        </div>
     </div>
-    <weekly-scheduler></weekly-scheduler>
+    <weekly-scheduler [weeklySchedulerConfig]="schedulerConfig" [weeklySchedulerData]="schedulerData"
+        [allowEdit]="allowActions()" [allowDelete]="allowActions()" [allowEnroll]="allowEnroll()"
+        (onEdit)="openEditDialog($event)" (onDelete)="openDeleteDialog($event)"
+        (onEnroll)="openSubscriptionDialog($event)"></weekly-scheduler>
 </div>

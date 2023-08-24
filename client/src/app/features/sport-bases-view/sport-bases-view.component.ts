@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SportBaseAddComponent } from './panels/sport-base-add/sport-base-add.component';
 import { catchError, tap, throwError } from 'rxjs';
 import { GenericPanelComponent } from 'src/app/components/panels/generic-panel/generic-panel.component';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-sport-bases-view',
@@ -17,7 +18,7 @@ import { GenericPanelComponent } from 'src/app/components/panels/generic-panel/g
   styleUrls: ['./sport-bases-view.component.scss']
 })
 export class SportBasesViewComponent {
-  displayedColumns: string[] = ['select', 'name', 'address', 'actions'];
+  displayedColumns: string[] = [...this.isUserAdmin() ? ['select'] : [], 'name', 'address', ...this.isUserAdmin() ? ['actions'] : []];
   dataSource!: MatTableDataSource<CourseLocationDTO>;
   selection = new SelectionModel<CourseLocationDTO>(true, []);
 
@@ -41,7 +42,7 @@ export class SportBasesViewComponent {
 
   decimalPipe = new DecimalPipe(navigator.language);
 
-  constructor(private sportBasesService: SportBasesViewService, public dialog: MatDialog) { }
+  constructor(private sportBasesService: SportBasesViewService, public dialog: MatDialog, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.refreshData();
@@ -58,6 +59,10 @@ export class SportBasesViewComponent {
       const end = (page + 1) * pageSize;
       return `${start} - ${end} din ${this.decimalPipe.transform(length)}`;
     };
+  }
+
+  public isUserAdmin() {
+    return this.tokenService.isUserAdmin();
   }
 
   public openAddDialog(): void {
@@ -111,7 +116,6 @@ export class SportBasesViewComponent {
           .subscribe();
       }
     });
-
   }
 
   private refreshData(): void {

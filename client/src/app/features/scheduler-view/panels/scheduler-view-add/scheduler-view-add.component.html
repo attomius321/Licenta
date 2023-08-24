@@ -1,0 +1,67 @@
+<div class="dialog">
+    <div class="dialog__title">
+        <ng-container *ngIf="data?.id; else noData"> Editeaza </ng-container>
+        <ng-template #noData> Adauga </ng-template>
+    </div>
+    <div class="dialog__content">
+        <form [formGroup]="courseScheduleForm">
+            <div class="flex">
+                <mat-form-field>
+                    <mat-label>Activitate</mat-label>
+                    <mat-select [compareWith]="compareWithFn" formControlName="course">
+                        <mat-option *ngFor="let course of courses | async" [value]="course">
+                            {{course.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Cadru didactic</mat-label>
+                    <mat-select [compareWith]="compareWithFn" formControlName="teacher">
+                        <mat-option *ngFor="let teacher of teachers | async" [value]="teacher">
+                            {{teacher.lastName + ' ' + teacher.firstName}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <mat-form-field>
+                <mat-label>Locatia</mat-label>
+                <mat-select [compareWith]="compareWithFn" formControlName="courseLocation">
+                    <mat-option *ngFor="let location of locations | async" [value]="location">
+                        {{location.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ziua</mat-label>
+                <mat-select formControlName="dayOfWeek">
+                    <mat-option *ngFor="let day of days" [value]="day.value">
+                        {{day.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ora</mat-label>
+                <mat-select formControlName="startsAtHour">
+                    <mat-option *ngFor="let hour of hoursInterval" [value]="hour">
+                        {{hour}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Alocarea maxima</mat-label>
+                <input type="number" matInput formControlName="maxAllocation">
+            </mat-form-field>
+
+            <div class="dialog__content__buttons">
+                <button type="button" mat-button (click)="close()">ANULEAZA</button>
+                <button [disabled]="courseScheduleForm.invalid" mat-button (click)="save()">SALVEAZA</button>
+            </div>
+        </form>
+    </div>
+</div>

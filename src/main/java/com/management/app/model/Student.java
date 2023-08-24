@@ -1,5 +1,6 @@
 package com.management.app.model;
 
+import com.management.app.DTOs.CourseScheduleDTO;
 import com.management.app.security.entities.User;
 import jakarta.persistence.*;
 
@@ -21,12 +22,9 @@ public class Student {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "student_course_schedule",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_schedule_id")
-    )
-    private Set<CourseSchedule> courseSchedules = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "course_schedule_id")
+    private CourseSchedule courseSchedule;
 
     @ManyToOne
     @JoinColumn(name = "university_id")
@@ -66,30 +64,20 @@ public class Student {
         this.year = year;
     }
 
-    public Set<CourseSchedule> getCourseSchedules() {
-        return new HashSet(courseSchedules);
-    }
-
-    public void addCourseSchedule(CourseSchedule courseSchedule) {
-        if (courseSchedules.contains(courseSchedule))
-            return;
-
-        courseSchedules.add(courseSchedule);
-    }
-
-    public void removeCourseSchedule(CourseSchedule courseSchedule) {
-        if (!courseSchedules.contains(courseSchedule))
-            return;
-
-        courseSchedules.remove(courseSchedule);
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public CourseSchedule getCourseSchedule() {
+        return courseSchedule;
+    }
+
+    public void setCourseSchedule(CourseSchedule courseSchedule) {
+        this.courseSchedule = courseSchedule;
     }
 
     public University getUniversity() {

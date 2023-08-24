@@ -32,21 +32,15 @@ public class StudentCourseScheduleService {
     }
 
     public boolean assignStudentToCourseSchedule(UUID courseScheduleId, UUID studentId) {
-        try {
-            //Get courseSchedule and student from db
-            Optional<Student> foundStudent = studentRepository.findById(studentId);
-            Optional<CourseSchedule> foundCourseSchedule = courseScheduleRepository.findById(courseScheduleId);
+            Optional<Student> student = studentRepository.findById(studentId);
+            Optional<CourseSchedule> courseSchedule = courseScheduleRepository.findById(courseScheduleId);
 
-            //Get current courseSchedules from found student and save new entry
-            foundStudent.get().addCourseSchedule(foundCourseSchedule.get());
-
-            //Save student to found courseSchedule
-            foundCourseSchedule.get().addStudent(foundStudent.get());
-            studentRepository.save(foundStudent.get());
+            if (courseSchedule.get().getStudents().size() + 1 > courseSchedule.get().getMaxAllocation()) {
+                return false;
+            }
+            student.get().setCourseSchedule(courseSchedule.get());
+            studentRepository.save(student.get());
             return true;
-        } catch (Exception e) {
-            return false;
-        }
     }
 
     public ResponseEntity<Set<StudentDTO>> getStudentsFromCourseSchedule(UUID csId) {

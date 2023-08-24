@@ -1,5 +1,7 @@
 package com.management.app.DTOs;
 
+import com.management.app.model.Student;
+
 import java.util.UUID;
 
 public class StudentDTO {
@@ -17,6 +19,15 @@ public class StudentDTO {
         this.year = year;
         this.universityName = universityName;
         this.email = email;
+    }
+
+    public StudentDTO(Student student) {
+        this.id = student.getId().toString();
+        this.firstName = student.getFirstName();
+        this.lastName = student.getLastName();
+        this.year = student.getYear();
+        this.universityName = student.getUniversity().getName();
+        this.email = student.getUser().getEmail();
     }
 
     public String getId() {

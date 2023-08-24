@@ -4,7 +4,7 @@
     </div>
     <div class="dialog__content">
         <div *ngFor="let content of data.content">
-            {{content}}
+            <div [innerHTML]="content"></div>
         </div>
         <div class="dialog__content__buttons">
             <button type="button" mat-button (click)="close()">ANULEAZA</button>

@@ -33,4 +33,12 @@ export class TokenStorageService {
         return JSON.parse(sessionStorage.getItem(USER_KEY)!);
     }
 
+    public isUserAdmin(): boolean {
+        return JSON.parse(sessionStorage.getItem(USER_KEY)!).role === 'ADMIN';
+    }
+
+    public isUserStudent(): boolean {
+        return JSON.parse(sessionStorage.getItem(USER_KEY)!).role === 'USER_STUDENT';
+    }
+
 }

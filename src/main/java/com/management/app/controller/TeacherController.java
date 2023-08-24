@@ -25,8 +25,12 @@ public class TeacherController {
     }
 
     @GetMapping
-    public List<TeacherDTO> getTeachers() {
-        return teacherService.getTeachers();
+    @ResponseBody
+    public List<TeacherDTO> getTeachers(@RequestParam(required = false) String courseId ) {
+        if (courseId != null)
+            return teacherService.getTeachersByCourse(UUID.fromString(courseId));
+        else
+            return teacherService.getTeachers();
     }
 
     @PostMapping

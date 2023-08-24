@@ -36,6 +36,11 @@ public class PopulateDBConfig {
             user_student2.setPassword(passwordEncoder.encode("password"));
             user_student2.setRole(Role.USER_STUDENT);
 
+            User user_student3 = new User();
+            user_student3.setEmail("student3@upt.ro");
+            user_student3.setPassword(passwordEncoder.encode("password"));
+            user_student3.setRole(Role.USER_STUDENT);
+
             User user_teacher1 = new User();
             user_teacher1.setEmail("teacher1@upt.ro");
             user_teacher1.setPassword(passwordEncoder.encode("password"));
@@ -52,7 +57,7 @@ public class PopulateDBConfig {
             user_admin.setRole(Role.ADMIN);
 
             repository.saveAll(
-                    List.of(user_student1, user_student2, user_teacher1, user_teacher2, user_admin)
+                    List.of(user_student1, user_student2, user_student3, user_teacher1, user_teacher2, user_admin)
             );
 
             University university1 = new University();
@@ -109,11 +114,19 @@ public class PopulateDBConfig {
             student2.setYear(1);
             student2.setUniversity(university2);
 
+            Student student3 = new Student();
+            student3.setFirstName("Student");
+            student3.setLastName("3");
+            student3.setYear(1);
+            student3.setUniversity(university2);
+
             student1.setUser(user_student1);
 
             student2.setUser(user_student2);
 
-            studentRepository.saveAll(List.of(student1, student2));
+            student3.setUser(user_student3);
+
+            studentRepository.saveAll(List.of(student1, student2, student3));
 
             Course course1 = new Course();
             course1.setName("Footbal");
@@ -176,11 +189,22 @@ public class PopulateDBConfig {
             courseLocationRepository.saveAll(List.of(cl1, cl2));
 
             CourseSchedule cs1 = new CourseSchedule();
+            cs1.setDayOfWeek(1);
+            cs1.setStartsAt("12:00");
+            cs1.setEndsAt("12:00");
+            cs1.setMaxAllocation(25);
             cs1.setCourse(course1);
             cs1.setCourseLocation(cl1);
+            cs1.setTeacher(teacher1);
+
             CourseSchedule cs2 = new CourseSchedule();
             cs2.setCourse(course2);
             cs2.setCourseLocation(cl2);
+            cs2.setMaxAllocation(30);
+            cs2.setDayOfWeek(2);
+            cs2.setStartsAt("14:00");
+            cs2.setEndsAt("14:00");
+            cs2.setTeacher(teacher2);
 
             courseScheduleRepository.saveAll(List.of(cs1, cs2));
 

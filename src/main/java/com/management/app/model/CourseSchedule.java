@@ -3,7 +3,6 @@ package com.management.app.model;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Cascade;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -18,13 +17,13 @@ public class CourseSchedule {
     private UUID id;
 
     private Integer dayOfWeek;
-    private Integer startsAtHour;
-    private Integer endsAtHour;
+    private String startsAtHour;
+    private String endsAtHour;
 
-    public CourseSchedule() { }
+    private Integer maxAllocation;
 
-    @ManyToMany(mappedBy = "courseSchedules", fetch = FetchType.LAZY)
-    private Set<Student> students = new HashSet<>();
+    @OneToMany(mappedBy = "courseSchedule")
+    private Set<Student> studentSet = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name="course_id")
@@ -34,6 +33,12 @@ public class CourseSchedule {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name="course_location_id")
     private CourseLocation courseLocation;
+
+    @ManyToOne
+    @JoinColumn(name="teacher_id")
+    private Teacher teacher;
+
+    public CourseSchedule() { }
 
     public UUID getId() {
         return id;
@@ -51,38 +56,28 @@ public class CourseSchedule {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public Integer getStartsAt() {
+    public String getStartsAt() {
         return startsAtHour;
     }
 
-    public void setStartsAt(Integer startsAt) {
+    public void setStartsAt(String startsAt) {
         this.startsAtHour = startsAt;
     }
 
-    public Integer getEndsAt() {
+    public String getEndsAt() {
         return endsAtHour;
     }
 
-    public void setEndsAt(Integer endsAt) {
+    public void setEndsAt(String endsAt) {
         this.endsAtHour = endsAt;
     }
 
-    public Set<Student> getStudents() {
-        return new HashSet<Student>(students);
+    public Integer getMaxAllocation() {
+        return maxAllocation;
     }
 
-    public void addStudent(Student student) {
-        if (students.contains(student))
-            return;
-
-        students.add(student);
-    }
-
-    public void removeStudent(Student student) {
-        if (!students.contains(student))
-            return;
-
-        students.remove(student);
+    public void setMaxAllocation(Integer maxAllocation) {
+        this.maxAllocation = maxAllocation;
     }
 
     public Course getCourse() {
@@ -99,5 +94,21 @@ public class CourseSchedule {
 
     public void setCourseLocation(CourseLocation courseLocation) {
         this.courseLocation = courseLocation;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Set<Student> getStudents() {
+        return studentSet;
+    }
+
+    public void setStudents(Set<Student> studentSet) {
+        this.studentSet = studentSet;
     }
 }
