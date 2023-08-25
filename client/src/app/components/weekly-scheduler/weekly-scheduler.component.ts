@@ -12,10 +12,8 @@ export class WeeklySchedulerComponent implements OnInit {
 
   @Input() weeklySchedulerConfig!: WeeklySchedulerConfig;
   @Input() weeklySchedulerData!: WeeklySchedulerData[] | null;
-  @Input() allowEdit!: boolean;
-  @Input() allowDelete!: boolean;
-  @Input() allowEnroll!: boolean;
 
+  @Output() onView: EventEmitter<string> = new EventEmitter<string>();
   @Output() onEdit: EventEmitter<string> = new EventEmitter<string>();
   @Output() onDelete: EventEmitter<string> = new EventEmitter<string>();
   @Output() onEnroll: EventEmitter<string> = new EventEmitter<string>();
@@ -44,6 +42,10 @@ export class WeeklySchedulerComponent implements OnInit {
 
   onDragStart(data: WeeklySchedulerData) {
     this.currentDragged = data;
+  }
+
+  onViewClicked(id: string) {
+    this.onView.emit(id);
   }
 
   onEditClicked(id: string) {

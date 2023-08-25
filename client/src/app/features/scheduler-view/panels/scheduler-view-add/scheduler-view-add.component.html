@@ -5,26 +5,23 @@
     </div>
     <div class="dialog__content">
         <form [formGroup]="courseScheduleForm">
-            <div class="flex">
-                <mat-form-field>
-                    <mat-label>Activitate</mat-label>
-                    <mat-select [compareWith]="compareWithFn" formControlName="course">
-                        <mat-option *ngFor="let course of courses | async" [value]="course">
-                            {{course.name}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <mat-form-field>
+                <mat-label>Activitate</mat-label>
+                <mat-select [compareWith]="compareWithFn" formControlName="course">
+                    <mat-option *ngFor="let course of courses | async" [value]="course">
+                        {{course.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Cadru didactic</mat-label>
-                    <mat-select [compareWith]="compareWithFn" formControlName="teacher">
-                        <mat-option *ngFor="let teacher of teachers | async" [value]="teacher">
-                            {{teacher.lastName + ' ' + teacher.firstName}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-
+            <mat-form-field *ngIf="!data.activeTeacher">
+                <mat-label>Cadru didactic</mat-label>
+                <mat-select [compareWith]="compareWithFn" formControlName="teacher">
+                    <mat-option *ngFor="let teacher of teachers | async" [value]="teacher">
+                        {{teacher.lastName + ' ' + teacher.firstName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Locatia</mat-label>

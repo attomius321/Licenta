@@ -41,4 +41,8 @@ export class TokenStorageService {
         return JSON.parse(sessionStorage.getItem(USER_KEY)!).role === 'USER_STUDENT';
     }
 
+    public isUserTeacher(): boolean {
+        return JSON.parse(sessionStorage.getItem(USER_KEY)!).role === 'USER_TEACHER';
+    }
+
 }

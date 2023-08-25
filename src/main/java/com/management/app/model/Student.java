@@ -1,6 +1,5 @@
 package com.management.app.model;
 
-import com.management.app.DTOs.CourseScheduleDTO;
 import com.management.app.security.entities.User;
 import jakarta.persistence.*;
 

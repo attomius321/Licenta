@@ -7,6 +7,7 @@
     --efc-primary-hover: #622B8C;
     --efc-border: #E0E0E0;
     --efc-upt-blue: #00145F;
+    --efc-selective-border: #00AC81;
 }
 
 html,
@@ -151,7 +152,6 @@ body {
     }
 
     &__content {
-
         form {
             display: flex;
             flex-direction: column;
@@ -162,6 +162,7 @@ body {
             justify-content: flex-end;
 
             button {
+                margin-top: 20px;
                 margin-left: 10px;
             }
         }

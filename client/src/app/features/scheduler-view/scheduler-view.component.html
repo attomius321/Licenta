@@ -13,7 +13,6 @@
         </div>
     </div>
     <weekly-scheduler [weeklySchedulerConfig]="schedulerConfig" [weeklySchedulerData]="schedulerData"
-        [allowEdit]="allowActions()" [allowDelete]="allowActions()" [allowEnroll]="allowEnroll()"
-        (onEdit)="openEditDialog($event)" (onDelete)="openDeleteDialog($event)"
+        (onView)="openViewDialog($event)" (onEdit)="openEditDialog($event)" (onDelete)="openDeleteDialog($event)"
         (onEnroll)="openSubscriptionDialog($event)"></weekly-scheduler>
 </div>

@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class TeacherDTO {
+public class TeacherDTO extends BaseEntityDTO {
     private String id;
     private String firstName;
     private String lastName;

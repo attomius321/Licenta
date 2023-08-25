@@ -11,13 +11,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { ScheduleViewPanelComponent } from './panels/schedule-view-panel/schedule-view-panel.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 
 @NgModule({
   declarations: [
     SchedulerViewComponent,
-    SchedulerViewAddComponent
+    SchedulerViewAddComponent,
+    ScheduleViewPanelComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
   ],
   providers: [
     SchedulerViewService

@@ -1,4 +1,5 @@
-FROM bellsoft/liberica-openjdk-alpine-musl:17
-COPY target/backend.jar app.jar
+FROM openjdk:17-jdk-slim
+VOLUME /tmp
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+COPY target/backend.jar backend.jar
+ENTRYPOINT ["java","-jar","/backend.jar"]

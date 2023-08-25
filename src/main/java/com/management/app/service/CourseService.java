@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,5 +30,11 @@ public class CourseService {
                         .map(course -> new CourseDTO(course.getId().toString(), course.getName(), course.getScheduleColor()))
                         .collect(Collectors.toList());
         return courseDTOS;
+    }
+
+    public List<CourseDTO> getCoursesByTeachers(UUID id) {
+        return courseRepository.findByTeachers_Id(id).stream()
+                .map(course -> new CourseDTO(course.getId().toString(), course.getName(), course.getScheduleColor()))
+                .collect(Collectors.toList());
     }
 }

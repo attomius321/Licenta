@@ -33,16 +33,9 @@ export class SchedulerViewAddComponent {
     private schedulerViewService: SchedulerViewService) { }
 
   ngOnInit(): void {
-    this.courseScheduleForm = this.formBuilder.group({
-      course: [this.data?.course ? this.data?.course : '', [Validators.required]],
-      teacher: [this.data?.teacher ? this.data?.teacher : '', [Validators.required]],
-      courseLocation: [this.data?.courseLocation ? this.data?.courseLocation : '', [Validators.required]],
-      dayOfWeek: [this.data?.dayOfWeek ? this.data?.dayOfWeek : '', [Validators.required]],
-      startsAtHour: [this.data?.startsAtHour ? this.data?.startsAtHour : '', [Validators.required]],
-      maxAllocation: [this.data?.maxAllocation ? this.data?.maxAllocation : '', [Validators.required]]
-    })
+    this.courseScheduleForm = this.formBuilder.group(this.createFormGroup())
 
-    this.courses = this.schedulerViewService.getCourses();
+    this.courses = this.schedulerViewService.getCourses(this.data?.activeTeacher?.id);
     this.locations = this.schedulerViewService.getCourseLocations();
 
     if (this.data?.course) {
@@ -55,6 +48,17 @@ export class SchedulerViewAddComponent {
       this.courseScheduleForm.get('teacher')?.enable();
       this.teachers = this.schedulerViewService.getTeachersByCourse(value);
     })
+  }
+
+  public createFormGroup() {
+    return {
+      course: [this.data?.course ? this.data?.course : '', [Validators.required]],
+      teacher: [this.data?.teacher ? this.data?.teacher : this.data?.activeTeacher ? this.data?.activeTeacher : '', [Validators.required]],
+      courseLocation: [this.data?.courseLocation ? this.data?.courseLocation : '', [Validators.required]],
+      dayOfWeek: [this.data?.dayOfWeek ? this.data?.dayOfWeek : '', [Validators.required]],
+      startsAtHour: [this.data?.startsAtHour ? this.data?.startsAtHour : '', [Validators.required]],
+      maxAllocation: [this.data?.maxAllocation ? this.data?.maxAllocation : '', [Validators.required]]
+    }
   }
 
   public close() {

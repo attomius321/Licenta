@@ -10,4 +10,5 @@ type JwtAuthenticationResponse = {
 type LoginUser = {
     email: string;
     role: string;
+    entity: any;
 }

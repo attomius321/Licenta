@@ -33,8 +33,13 @@ export class SchedulerViewService {
         return this.http.delete(COURSE_SCHEDULE_API, { body: ids });
     }
 
-    public getCourses(): Observable<CourseDTO[]> {
-        return <Observable<CourseDTO[]>>this.http.get(COURSE_API);
+    public getCourses(teacherId: string): Observable<CourseDTO[]> {
+        let queryParams = new HttpParams();
+        if (teacherId) {
+            queryParams = queryParams.append("teacherId", teacherId || '');
+        }
+
+        return <Observable<CourseDTO[]>>this.http.get(COURSE_API, { params: queryParams });
     }
 
     public getTeachersByCourse(courseDTO: CourseDTO): Observable<TeacherDTO[]> {

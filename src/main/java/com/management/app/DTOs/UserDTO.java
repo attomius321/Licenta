@@ -5,12 +5,12 @@ public class UserDTO {
 
     private String email;
     private String  role;
-    private String entityId;
+    private BaseEntityDTO baseEntity;
 
-    public UserDTO(String email, String role, String entityId) {
+    public UserDTO(String email, String role, BaseEntityDTO baseEntityDTO) {
         this.email = email;
         this.role = role;
-        this.entityId = entityId;
+        this.baseEntity = baseEntityDTO;
     }
 
     public String getEmail() {
@@ -29,11 +29,11 @@ public class UserDTO {
         this.role = role;
     }
 
-    public String getEntityId() {
-        return entityId;
+    public BaseEntityDTO getEntity() {
+        return baseEntity;
     }
 
-    public void setEntityId(String entityId) {
-        this.entityId = entityId;
+    public void setEntity(BaseEntityDTO entityId) {
+        this.baseEntity = baseEntity;
     }
 }

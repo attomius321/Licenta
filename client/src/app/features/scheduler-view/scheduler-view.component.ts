@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SchedulerViewAddComponent } from './panels/scheduler-view-add/scheduler-view-add.component';
 import { GenericPanelComponent } from 'src/app/components/panels/generic-panel/generic-panel.component';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { ScheduleViewPanelComponent } from './panels/schedule-view-panel/schedule-view-panel.component';
 
 @Component({
   selector: 'app-scheduler-view',
@@ -28,7 +29,7 @@ export class SchedulerViewComponent implements OnInit {
   constructor(private schedulerViewService: SchedulerViewService, public dialog: MatDialog, private tokenStorageService: TokenStorageService) { }
 
   public allowActions(): boolean {
-    return this.tokenStorageService.isUserAdmin();
+    return this.tokenStorageService.isUserAdmin() || this.tokenStorageService.isUserTeacher();
   }
 
   public allowEnroll(): boolean {
@@ -41,7 +42,9 @@ export class SchedulerViewComponent implements OnInit {
 
   public openAddDialog(): void {
     const dialogRef = this.dialog.open(SchedulerViewAddComponent, {
-      data: {},
+      data: {
+        activeTeacher: this.tokenStorageService.getUser().role === 'USER_TEACHER' ? this.tokenStorageService.getUser().entity : null
+      },
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -54,7 +57,16 @@ export class SchedulerViewComponent implements OnInit {
     });
   }
 
-  openEditDialog(id: string): void {
+  public openViewDialog(id: string): void {
+    const courseSchedule = this.courseSchedules.find((data: CourseScheduleDTO) => data.id === id);
+    const dialogRef = this.dialog.open(ScheduleViewPanelComponent, {
+      data: courseSchedule
+    })
+
+    dialogRef.afterClosed().subscribe(result => { })
+  }
+
+  public openEditDialog(id: string): void {
     const courseSchedule = this.courseSchedules.find((data: CourseScheduleDTO) => data.id === id);
     const dialogRef = this.dialog.open(SchedulerViewAddComponent, {
       data: courseSchedule
@@ -95,7 +107,7 @@ export class SchedulerViewComponent implements OnInit {
 
   public openSubscriptionDialog(id: string): void {
     const courseSchedule = this.courseSchedules.find((data: CourseScheduleDTO) => data.id === id);
-    const studentId = this.tokenStorageService.getUser().entityId;
+    const studentId = this.tokenStorageService.getUser().entity.id;
     const dialogRef = this.dialog.open(GenericPanelComponent, {
       data: {
         title: 'Inscriere',
@@ -123,8 +135,10 @@ export class SchedulerViewComponent implements OnInit {
       .pipe(
         map((courseSchedules: CourseScheduleDTO[]) => {
           this.courseSchedules = courseSchedules;
-          return courseSchedules.map((courseSchedule: CourseScheduleDTO) =>
-            adaptToWeeklyScheduler(courseSchedule))
+          return courseSchedules.map((courseSchedule: CourseScheduleDTO) => {
+            if (this.tokenStorageService.isUserAdmin()) return adaptToWeeklyScheduler(courseSchedule, this.tokenStorageService.getUser().role);
+            else return adaptToWeeklyScheduler(courseSchedule, this.tokenStorageService.getUser().role, this.tokenStorageService.getUser().entity)
+          })
         })
       ).subscribe((res: WeeklySchedulerData[]) => this.schedulerData = res);
   }

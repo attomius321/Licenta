@@ -4,7 +4,7 @@ import com.management.app.model.Student;
 
 import java.util.UUID;
 
-public class StudentDTO {
+public class StudentDTO extends BaseEntityDTO {
     private String id;
     private String firstName;
     private String lastName;

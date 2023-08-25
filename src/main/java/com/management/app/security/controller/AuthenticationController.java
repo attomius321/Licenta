@@ -1,6 +1,10 @@
 package com.management.app.security.controller;
 
+import com.management.app.DTOs.BaseEntityDTO;
+import com.management.app.DTOs.StudentDTO;
+import com.management.app.DTOs.TeacherDTO;
 import com.management.app.DTOs.UserDTO;
+import com.management.app.model.Teacher;
 import com.management.app.security.controller.dtos.SignInResponse;
 import com.management.app.security.dao.request.SignUpRequest;
 import com.management.app.security.dao.request.SigninRequest;
@@ -31,11 +35,11 @@ public class AuthenticationController {
     public ResponseEntity<SignInResponse> signin(@RequestBody SigninRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
-        UUID studentId = (user.getStudent() != null) ? user.getStudent().getId() : null;
-        UUID teacherId = (user.getTeacher() != null) ? user.getTeacher().getId() : null;
+        StudentDTO student = (user.getStudent() != null) ? new StudentDTO(user.getStudent()) : null;
+        TeacherDTO teacher = (user.getTeacher() != null) ? new TeacherDTO(user.getTeacher()) : null;
 
         SignInResponse signInResponse = new SignInResponse(authenticationService.signin(request), new UserDTO(user.getEmail(), user.getRole().toString(),
-                (studentId != null) ? studentId.toString() : (teacherId != null) ? teacherId.toString() : null));
+                (student != null) ? student : (teacher != null) ? teacher : null));
         return ResponseEntity.ok(signInResponse);
     }
 }

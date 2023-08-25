@@ -19,7 +19,9 @@
                     <ng-container *ngIf="data.dayOfWeek === i + 1 && data.startsAt === hour">
                         <mat-card cdkDrag [cdkDragDisabled]="true" (cdkDragStarted)="onDragStart(data)"
                             class="schedule-container" [style.border]="'2px solid ' + data.color">
-                            <div class="color-container" [style.background]="data.color"></div>
+                            <div class="color-container" [style.background]="data.color">
+                                <div *ngIf="data.isActive" class="active"></div>
+                            </div>
                             <div class="details">
                                 <div class="title">
                                     {{data.title | uppercase}} - {{data.by | uppercase}}
@@ -27,21 +29,36 @@
                                 <div class="at">
                                     {{data.at | uppercase}}
                                 </div>
-                                <div class="metadata">
+                                <div class="metadata" [ngClass]="{'full': data.enrolled === data.maxAllocation}">
                                     {{data.metadataLabel}}: {{data.enrolled}}/{{data.maxAllocation}}
                                 </div>
                             </div>
                             <div class="icons">
-                                <button *ngIf="allowEdit" mat-button (click)="onEditClicked(data.id)">
-                                    <mat-icon>edit</mat-icon>
+                                <button
+                                    *ngIf="data.canEdit || data.canDelete || (data.canEnroll && maxAllocationPermit(data.enrolled, data.maxAllocation))"
+                                    class="primary-button" mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
+                                    <mat-icon>more_vert</mat-icon>
                                 </button>
-                                <button *ngIf="allowDelete" mat-button (click)="onDeleteClicked(data.id)">
-                                    <mat-icon>delete</mat-icon>
-                                </button>
-                                <button *ngIf="allowEnroll && maxAllocationPermit(data.enrolled, data.maxAllocation)"
-                                    mat-button (click)="onEnrollClicked(data.id)">
-                                    <mat-icon>subscriptions</mat-icon>
-                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item *ngIf="data.canEdit" (click)="onViewClicked(data.id)">
+                                        <mat-icon>visibility</mat-icon>
+                                        VIZUALIZEAZA
+                                    </button>
+                                    <button mat-menu-item *ngIf="data.canEdit" (click)="onEditClicked(data.id)">
+                                        <mat-icon>edit</mat-icon>
+                                        EDITEAZA
+                                    </button>
+                                    <button mat-menu-item *ngIf="data.canDelete" (click)="onDeleteClicked(data.id)">
+                                        <mat-icon>delete</mat-icon>
+                                        STERGE
+                                    </button>
+                                    <button
+                                        *ngIf="data.canEnroll && maxAllocationPermit(data.enrolled, data.maxAllocation)"
+                                        (click)="onEnrollClicked(data.id)" mat-menu-item>
+                                        <mat-icon>subscriptions</mat-icon>
+                                        INSCRIE-TE
+                                    </button>
+                                </mat-menu>
                             </div>
                         </mat-card>
                     </ng-container>
