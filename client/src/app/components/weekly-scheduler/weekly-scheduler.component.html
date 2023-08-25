@@ -34,11 +34,10 @@
                                 </div>
                             </div>
                             <div class="icons">
-                                <button
+                                <mat-icon
                                     *ngIf="data.canEdit || data.canDelete || (data.canEnroll && maxAllocationPermit(data.enrolled, data.maxAllocation))"
-                                    class="primary-button" mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger>
-                                    <mat-icon>more_vert</mat-icon>
-                                </button>
+                                    class="primary-button" mat-icon-button [matMenuTriggerFor]="menu"
+                                    #menuTrigger>more_vert</mat-icon>
                                 <mat-menu #menu="matMenu">
                                     <button mat-menu-item *ngIf="data.canEdit" (click)="onViewClicked(data.id)">
                                         <mat-icon>visibility</mat-icon>
