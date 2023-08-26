@@ -3,6 +3,7 @@ package com.management.app.controller;
 import com.management.app.DTOs.StudentDTO;
 import com.management.app.model.Student;
 import com.management.app.service.StudentService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ public class StudentController {
     }
 
     @GetMapping
+    @RolesAllowed({"ADMIN", "USER_TEACHER"})
     public List<StudentDTO> getStudents() {
         return studentService.getStudents();
     }

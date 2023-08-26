@@ -2,6 +2,7 @@ package com.management.app.DTOs;
 
 import com.management.app.model.Teacher;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -10,11 +11,11 @@ public class TeacherDTO extends BaseEntityDTO {
     private String id;
     private String firstName;
     private String lastName;
-    private Set<UniversityDTO> universities;
-    private Set<CourseDTO> courses;
+    private List<UniversityDTO> universities;
+    private List<CourseDTO> courses;
     private String email;
 
-    public TeacherDTO(String id, String firstName, String lastName, Set<UniversityDTO> universities, Set<CourseDTO> courses,  String email) {
+    public TeacherDTO(String id, String firstName, String lastName, List<UniversityDTO> universities, List<CourseDTO> courses,  String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,8 +28,8 @@ public class TeacherDTO extends BaseEntityDTO {
         this.id = teacher.getId().toString();
         this.firstName = teacher.getFirstName();
         this.lastName = teacher.getLastName();
-        this.universities = teacher.getUniversities().stream().map(university -> new UniversityDTO(university)).collect(Collectors.toSet());
-        this.courses = teacher.getCourses().stream().map(course -> new CourseDTO(course)).collect(Collectors.toSet());
+        this.universities = teacher.getUniversities().stream().map(university -> new UniversityDTO(university)).collect(Collectors.toList());
+        this.courses = teacher.getCourses().stream().map(course -> new CourseDTO(course)).collect(Collectors.toList());
         this.email = teacher.getUser().getEmail();
     }
 
@@ -56,19 +57,19 @@ public class TeacherDTO extends BaseEntityDTO {
         this.lastName = lastName;
     }
 
-    public Set<UniversityDTO> getUniversities() {
+    public List<UniversityDTO> getUniversities() {
         return universities;
     }
 
-    public void setUniversities(Set<UniversityDTO> universities) {
+    public void setUniversities(List<UniversityDTO> universities) {
         this.universities = universities;
     }
 
-    public Set<CourseDTO> getCourses() {
+    public List<CourseDTO> getCourses() {
         return courses;
     }
 
-    public void setCourses(Set<CourseDTO> courses) {
+    public void setCourses(List<CourseDTO> courses) {
         this.courses = courses;
     }
 

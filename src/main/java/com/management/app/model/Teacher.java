@@ -26,6 +26,7 @@ public class Teacher {
             joinColumns = @JoinColumn(name = "teacher_id"),
             inverseJoinColumns = @JoinColumn(name = "university_id")
     )
+
     private Set<University> universities = new HashSet<>();
 
     @OneToOne

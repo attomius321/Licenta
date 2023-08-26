@@ -1,7 +1,7 @@
 package com.management.app.security.entities;
 
 public enum Role {
-    USER_TEACHER,
-    USER_STUDENT,
-    ADMIN
+    ROLE_TEACHER,
+    ROLE_STUDENT,
+    ROLE_ADMIN
 }

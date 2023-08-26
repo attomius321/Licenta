@@ -29,102 +29,102 @@ public class PopulateDBConfig {
             User user_student1 = new User();
             user_student1.setEmail("student1@upt.ro");
             user_student1.setPassword(passwordEncoder.encode("password"));
-            user_student1.setRole(Role.USER_STUDENT);
+            user_student1.setRole(Role.ROLE_STUDENT);
 
             User user_student2 = new User();
             user_student2.setEmail("student2@upt.ro");
             user_student2.setPassword(passwordEncoder.encode("password"));
-            user_student2.setRole(Role.USER_STUDENT);
+            user_student2.setRole(Role.ROLE_STUDENT);
 
             User user_student3 = new User();
             user_student3.setEmail("student3@upt.ro");
             user_student3.setPassword(passwordEncoder.encode("password"));
-            user_student3.setRole(Role.USER_STUDENT);
+            user_student3.setRole(Role.ROLE_STUDENT);
 
             User user_student4 = new User();
             user_student4.setEmail("student4@upt.ro");
             user_student4.setPassword(passwordEncoder.encode("password"));
-            user_student4.setRole(Role.USER_STUDENT);
+            user_student4.setRole(Role.ROLE_STUDENT);
 
             User user_student5 = new User();
             user_student5.setEmail("student5@upt.ro");
             user_student5.setPassword(passwordEncoder.encode("password"));
-            user_student5.setRole(Role.USER_STUDENT);
+            user_student5.setRole(Role.ROLE_STUDENT);
 
             User user_student6= new User();
             user_student6.setEmail("student6@upt.ro");
             user_student6.setPassword(passwordEncoder.encode("password"));
-            user_student6.setRole(Role.USER_STUDENT);
+            user_student6.setRole(Role.ROLE_STUDENT);
 
             User user_student7 = new User();
             user_student7.setEmail("student7@upt.ro");
             user_student7.setPassword(passwordEncoder.encode("password"));
-            user_student7.setRole(Role.USER_STUDENT);
+            user_student7.setRole(Role.ROLE_STUDENT);
 
             User user_student8 = new User();
             user_student8.setEmail("student8@upt.ro");
             user_student8.setPassword(passwordEncoder.encode("password"));
-            user_student8.setRole(Role.USER_STUDENT);
+            user_student8.setRole(Role.ROLE_STUDENT);
 
             User user_student9 = new User();
             user_student9.setEmail("student9@upt.ro");
             user_student9.setPassword(passwordEncoder.encode("password"));
-            user_student9.setRole(Role.USER_STUDENT);
+            user_student9.setRole(Role.ROLE_STUDENT);
 
             User user_student10 = new User();
             user_student10.setEmail("student10@upt.ro");
             user_student10.setPassword(passwordEncoder.encode("password"));
-            user_student10.setRole(Role.USER_STUDENT);
+            user_student10.setRole(Role.ROLE_STUDENT);
 
             User user_student11 = new User();
             user_student11.setEmail("student11@upt.ro");
             user_student11.setPassword(passwordEncoder.encode("password"));
-            user_student11.setRole(Role.USER_STUDENT);
+            user_student11.setRole(Role.ROLE_STUDENT);
 
             User user_student12 = new User();
             user_student12.setEmail("student12@upt.ro");
             user_student12.setPassword(passwordEncoder.encode("password"));
-            user_student12.setRole(Role.USER_STUDENT);
+            user_student12.setRole(Role.ROLE_STUDENT);
 
             User user_teacher1 = new User();
             user_teacher1.setEmail("teacher1@upt.ro");
             user_teacher1.setPassword(passwordEncoder.encode("password"));
-            user_teacher1.setRole(Role.USER_TEACHER);
+            user_teacher1.setRole(Role.ROLE_TEACHER);
 
             User user_teacher2 = new User();
             user_teacher2.setEmail("teacher2@upt.ro");
             user_teacher2.setPassword(passwordEncoder.encode("password"));
-            user_teacher2.setRole(Role.USER_TEACHER);
+            user_teacher2.setRole(Role.ROLE_TEACHER);
 
             User user_teacher3 = new User();
             user_teacher3.setEmail("teacher3@upt.ro");
             user_teacher3.setPassword(passwordEncoder.encode("password"));
-            user_teacher3.setRole(Role.USER_TEACHER);
+            user_teacher3.setRole(Role.ROLE_TEACHER);
 
             User user_teacher4 = new User();
             user_teacher4.setEmail("teacher4@upt.ro");
             user_teacher4.setPassword(passwordEncoder.encode("password"));
-            user_teacher4.setRole(Role.USER_TEACHER);
+            user_teacher4.setRole(Role.ROLE_TEACHER);
 
             User user_teacher5 = new User();
             user_teacher5.setEmail("teacher5@upt.ro");
             user_teacher5.setPassword(passwordEncoder.encode("password"));
-            user_teacher5.setRole(Role.USER_TEACHER);
+            user_teacher5.setRole(Role.ROLE_TEACHER);
 
             User user_teacher6 = new User();
             user_teacher6.setEmail("teacher6@upt.ro");
             user_teacher6.setPassword(passwordEncoder.encode("password"));
-            user_teacher6.setRole(Role.USER_TEACHER);
+            user_teacher6.setRole(Role.ROLE_TEACHER);
 
             User user_teacher7 = new User();
             user_teacher7.setEmail("teacher7@upt.ro");
             user_teacher7.setPassword(passwordEncoder.encode("password"));
-            user_teacher7.setRole(Role.USER_TEACHER);
+            user_teacher7.setRole(Role.ROLE_TEACHER);
 
             User user_admin = new User();
             user_admin.setEmail("admin@upt.ro");
             user_admin.setPassword(passwordEncoder.encode("password"));
-            user_admin.setRole(Role.ADMIN);
+            user_admin.setRole(Role.ROLE_ADMIN);
 
             repository.saveAll(
                     List.of(user_student1, user_student2, user_student3,

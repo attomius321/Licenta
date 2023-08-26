@@ -1,3 +1,4 @@
+import { ROLES } from "src/app/types/role.types";
 import { SidenavConfig } from "../types/base.types";
 
 const SNAdminConfig: SidenavConfig = {
@@ -90,9 +91,9 @@ const SNTeacherConfig: SidenavConfig = {
 }
 
 const SN_ROLE_MAPPING: { [k: string]: SidenavConfig } = {
-    'ADMIN': SNAdminConfig,
-    'USER_STUDENT': SNStudentConfig,
-    'USER_TEACHER': SNTeacherConfig
+    [ROLES.ROLE_ADMIN]: SNAdminConfig,
+    [ROLES.ROLE_STUDENT]: SNStudentConfig,
+    [ROLES.ROLE_TEACHER]: SNTeacherConfig
 }
 
 export const getCurrentSNConfig = (role: string): SidenavConfig => {

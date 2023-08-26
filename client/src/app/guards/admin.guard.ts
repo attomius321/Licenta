@@ -17,7 +17,6 @@ export class AdminGuard {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean> | Promise<boolean> | UrlTree | boolean {
-        console.log("HELLOOOO", this.tokenStorageService.isUserAdmin)
         if (!this.tokenStorageService.isUserAdmin()) {
             this.tokenStorageService.signOut();
             this.snackbarService.openErrorSnackbar('Nu aveti acces la aceasta ruta!');

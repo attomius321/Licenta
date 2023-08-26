@@ -50,8 +50,8 @@ public class TeacherService {
         List<TeacherDTO> teacherDTOs =
                 teachers.stream()
                         .map(teacher -> new TeacherDTO(teacher.getId().toString(), teacher.getFirstName(), teacher.getLastName(),
-                                teacher.getUniversities().stream().map(university -> new UniversityDTO(university.getId().toString(), university.getName(), university.getAddress())).collect(Collectors.toSet()),
-                                teacher.getCourses().stream().map(course -> new CourseDTO(course.getId().toString(), course.getName(), course.getScheduleColor())).collect(Collectors.toSet()),
+                                teacher.getUniversities().stream().map(university -> new UniversityDTO(university.getId().toString(), university.getName(), university.getAddress())).collect(Collectors.toList()),
+                                teacher.getCourses().stream().map(course -> new CourseDTO(course.getId().toString(), course.getName(), course.getScheduleColor())).collect(Collectors.toList()),
                                 teacher.getUser().getEmail()))
                         .collect(Collectors.toList());
         return teacherDTOs;
@@ -60,8 +60,8 @@ public class TeacherService {
     public List<TeacherDTO> getTeachersByCourse(UUID id) {
         return teacherRepository.findByCourses_Id(id).stream()
                 .map(teacher -> new TeacherDTO(teacher.getId().toString(), teacher.getFirstName(), teacher.getLastName(),
-                        teacher.getUniversities().stream().map(university -> new UniversityDTO(university.getId().toString(), university.getName(), university.getAddress())).collect(Collectors.toSet()),
-                        teacher.getCourses().stream().map(course -> new CourseDTO(course.getId().toString(), course.getName(), course.getScheduleColor())).collect(Collectors.toSet()),
+                        teacher.getUniversities().stream().map(university -> new UniversityDTO(university.getId().toString(), university.getName(), university.getAddress())).collect(Collectors.toList()),
+                        teacher.getCourses().stream().map(course -> new CourseDTO(course.getId().toString(), course.getName(), course.getScheduleColor())).collect(Collectors.toList()),
                         teacher.getUser().getEmail()))
                 .collect(Collectors.toList());
     }
@@ -69,7 +69,7 @@ public class TeacherService {
     public Teacher createTeacher(TeacherDTO teacherDTO) throws ParseException {
         Teacher teacher = createNewEntity(teacherDTO);
         User user = new User();
-        user.setRole(Role.USER_TEACHER);
+        user.setRole(Role.ROLE_TEACHER);
         user.setEmail(teacherDTO.getEmail());
         user.setPassword(passwordEncoder.encode("password"));
         userRepository.save(user);

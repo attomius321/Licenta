@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ROLES } from '../types/role.types';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -34,15 +35,15 @@ export class TokenStorageService {
     }
 
     public isUserAdmin(): boolean {
-        return JSON.parse(sessionStorage.getItem(USER_KEY)!).role === 'ADMIN';
+        return JSON.parse(sessionStorage.getItem(USER_KEY)!).role === ROLES.ROLE_ADMIN;
     }
 
     public isUserStudent(): boolean {
-        return JSON.parse(sessionStorage.getItem(USER_KEY)!).role === 'USER_STUDENT';
+        return JSON.parse(sessionStorage.getItem(USER_KEY)!).role === ROLES.ROLE_STUDENT;
     }
 
     public isUserTeacher(): boolean {
-        return JSON.parse(sessionStorage.getItem(USER_KEY)!).role === 'USER_TEACHER';
+        return JSON.parse(sessionStorage.getItem(USER_KEY)!).role === ROLES.ROLE_TEACHER;
     }
 
 }

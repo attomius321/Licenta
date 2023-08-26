@@ -20,7 +20,7 @@ export class AuthService {
             password: credentials.password
         }).pipe(
             tap(() => this.snackbarService.openGenericSnackbar('Ati fost logat cu succes!')),
-            catchError((err) => throwError(() => console.log(err)))
+            catchError((err) => throwError(() => err))
         );
     }
 

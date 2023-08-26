@@ -11,7 +11,7 @@
     <mat-drawer-container class="base__container" autosize>
         <mat-drawer class="base__container__sidenav" #sidenav [opened]="true" mode="side">
             <div class="base__container__sidenav__start">
-                <button class="base__container__sidenav__item" mat-button *ngFor="let item of sidenav_config.start"
+                <button class="base__container__sidenav__item" mat-button *ngFor="let item of sidenav_config?.start"
                     (click)="navigateTo(item)" [ngClass]="{'active-button': isActive(item.route)}">
                     <mat-icon>{{item.icon}}</mat-icon>
                     {{item.title}}
@@ -19,7 +19,7 @@
             </div>
 
             <div class="base__container__sidenav__end">
-                <button class="base__container__sidenav__item" mat-button *ngFor="let item of sidenav_config.end"
+                <button class="base__container__sidenav__item" mat-button *ngFor="let item of sidenav_config?.end"
                     (click)="navigateTo(item)">
                     <mat-icon>{{item.icon}}</mat-icon>
                     {{item.title}}

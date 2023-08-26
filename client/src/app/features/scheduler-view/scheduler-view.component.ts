@@ -8,6 +8,7 @@ import { SchedulerViewAddComponent } from './panels/scheduler-view-add/scheduler
 import { GenericPanelComponent } from 'src/app/components/panels/generic-panel/generic-panel.component';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { ScheduleViewPanelComponent } from './panels/schedule-view-panel/schedule-view-panel.component';
+import { ROLES } from 'src/app/types/role.types';
 
 @Component({
   selector: 'app-scheduler-view',
@@ -43,7 +44,7 @@ export class SchedulerViewComponent implements OnInit {
   public openAddDialog(): void {
     const dialogRef = this.dialog.open(SchedulerViewAddComponent, {
       data: {
-        activeTeacher: this.tokenStorageService.getUser().role === 'USER_TEACHER' ? this.tokenStorageService.getUser().entity : null
+        activeTeacher: this.tokenStorageService.getUser().role === ROLES.ROLE_TEACHER ? this.tokenStorageService.getUser().entity : null
       },
     });
 

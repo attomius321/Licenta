@@ -2,6 +2,7 @@ import { WeeklySchedulerData } from "src/app/components/weekly-scheduler/types/w
 import { CourseLocationDTO } from "../../sport-bases-view/types/sport-bases-view.types";
 import { StudentDTO } from "../../students-view/types/students-view.types";
 import { CourseDTO, TeacherDTO } from "../../teachers-view/types/teachers-view.types";
+import { ROLES } from "src/app/types/role.types";
 
 export type CourseScheduleDTO = {
     id: string;
@@ -16,22 +17,22 @@ export type CourseScheduleDTO = {
 }
 
 const ACTIVATION_MAPPING: { [k: string]: (e: any, entity: any) => boolean } = {
-    'ADMIN': (_1: any, _2: any) => true,
-    'USER_TEACHER': (entity: TeacherDTO, currentyEntity?: any) => entity.id === currentyEntity.id,
-    'USER_STUDENT': (entities: any[], currentEntity: any) => entities.find((entity) => entity.id === currentEntity.id)
+    [ROLES.ROLE_ADMIN]: (_1: any, _2: any) => true,
+    [ROLES.ROLE_TEACHER]: (entity: TeacherDTO, currentyEntity?: any) => entity.id === currentyEntity.id,
+    [ROLES.ROLE_STUDENT]: (entities: any[], currentEntity: any) => entities.find((entity) => entity.id === currentEntity.id)
 }
 
 const isActive = (courseScheduleDTO: CourseScheduleDTO, role: string, currentEntity?: any) => {
     let entities: TeacherDTO | any[];
-    if (role === 'USER_STUDENT') entities = courseScheduleDTO.students;
-    if (role === 'USER_TEACHER') entities = courseScheduleDTO.teacher;
+    if (role === ROLES.ROLE_STUDENT) entities = courseScheduleDTO.students;
+    if (role === ROLES.ROLE_TEACHER) entities = courseScheduleDTO.teacher;
     return ACTIVATION_MAPPING[role](entities!, currentEntity!);
 }
 
 const EDIT_MAPPING: { [k: string]: (e: any, entity: any) => boolean } = {
-    'ADMIN': (_1: any, _2: any) => true,
-    'USER_TEACHER': (entity: TeacherDTO, currentyEntity?: any) => entity.id === currentyEntity.id,
-    'USER_STUDENT': (_1: any, _2: any) => false
+    [ROLES.ROLE_ADMIN]: (_1: any, _2: any) => true,
+    [ROLES.ROLE_TEACHER]: (entity: TeacherDTO, currentyEntity?: any) => entity.id === currentyEntity.id,
+    [ROLES.ROLE_STUDENT]: (_1: any, _2: any) => false
 }
 
 const canEdit = (courseScheduleDTO: CourseScheduleDTO, role: string, currnetEntity?: any) => {
@@ -43,9 +44,9 @@ const canDelete = (courseScheduleDTO: CourseScheduleDTO, role: string, currnetEn
 }
 
 const ENROLL_MAPPING: { [k: string]: (e: any, entity: any) => boolean } = {
-    'ADMIN': (_1: any, _2: any) => false,
-    'USER_TEACHER': (_1: any, _2: any) => false,
-    'USER_STUDENT': (_1: any, _2: any) => true
+    [ROLES.ROLE_ADMIN]: (_1: any, _2: any) => false,
+    [ROLES.ROLE_TEACHER]: (_1: any, _2: any) => false,
+    [ROLES.ROLE_STUDENT]: (_1: any, _2: any) => true
 }
 
 const canEnroll = (courseScheduleDTO: CourseScheduleDTO, role: string, currnetEntity: any) => {

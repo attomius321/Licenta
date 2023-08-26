@@ -4,6 +4,7 @@ import com.management.app.DTOs.CourseDTO;
 import com.management.app.DTOs.TeacherDTO;
 import com.management.app.service.CourseService;
 import com.management.app.service.TeacherService;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -6,11 +6,13 @@ import com.management.app.model.Course;
 import com.management.app.model.CourseSchedule;
 import com.management.app.model.Student;
 import com.management.app.service.StudentCourseScheduleService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -27,6 +29,7 @@ public class StudentCourseScheduleController {
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER')")
     public ResponseEntity<Set<StudentDTO>> getStudentsByCourseScheduleId(@PathVariable("id") String csId) {
         return this.studentCourseScheduleService.getStudentsFromCourseSchedule(UUID.fromString(csId));
     }

@@ -4,6 +4,7 @@ import com.management.app.DTOs.CourseLocationDTO;
 import com.management.app.model.CourseLocation;
 import com.management.app.service.CourseLocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
@@ -28,18 +29,21 @@ public class CourseLocationController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public CourseLocationDTO createCourseLocation(@RequestBody CourseLocationDTO courseLocationDTO) throws ParseException {
         CourseLocation courseLocation = courseLocationService.createCourseLocation(courseLocationDTO);
         return new CourseLocationDTO(courseLocation.getId().toString(), courseLocation.getName(), courseLocation.getAddress());
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public CourseLocationDTO updateCourseLocation(@RequestBody CourseLocationDTO courseLocationDTO) throws ParseException {
         CourseLocation courseLocation = courseLocationService.updateCourseLocation(courseLocationDTO);
         return new CourseLocationDTO(courseLocation.getId().toString(), courseLocation.getName(), courseLocation.getAddress());
     }
 
     @DeleteMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     public void deleteCourseLocationsByIds(@RequestBody List<String> ids) {
         courseLocationService.deleteCourseLocationsById(ids.stream().map(id -> UUID.fromString(id)).collect(Collectors.toSet()));
     }
